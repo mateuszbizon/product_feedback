@@ -4,7 +4,11 @@ import connectDB from "@/config/database"
 import User from "@/models/userModel";
 import { CreateUserType } from "@/types"
 
-export const createUser = async (user: CreateUserType) => {
+type CreateUserProps = {
+    user: CreateUserType;
+}
+
+export const createUser = async ({ user }: CreateUserProps) => {
     try {
         await connectDB();
 
