@@ -14,8 +14,7 @@ export const createUser = async ({ user }: CreateUserProps) => {
 
         const newUser = await User.create(user);
 
-        console.log('user created')
-        return JSON.parse(JSON.stringify(newUser));
+        return { data: JSON.parse(JSON.stringify(newUser)), message: "user created" };
     } catch (error) {
         console.log(error)
     }
