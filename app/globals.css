@@ -30,4 +30,8 @@
     .text-regular-3 {
         @apply font-semibold text-[13px] leading-[19px]
     }
+
+    .main-container {
+        @apply w-full mx-auto md:w-[90%] xl:w-[80%]
+    }
 }

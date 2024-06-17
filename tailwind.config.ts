@@ -24,7 +24,13 @@ const config: Config = {
         "primary-4": "#F49F85",
         "error-1": "#D73737",
         "error-1-bright": "#E98888",
-      }
+      },
+      backgroundImage: {
+        "background-header-mobile": "url('/background-header-mobile.png')",
+      },
+      height: {
+        "home-header-height": "70px",
+      },
     },
   },
   plugins: [],

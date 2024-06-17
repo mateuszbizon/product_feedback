@@ -18,7 +18,11 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={jost.className}>{children}</body>
+        <body className={`${jost.className} bg-light-3`}>
+          <div className="main-container">
+            {children}
+          </div>
+        </body>
       </html>
     </ClerkProvider>
   );

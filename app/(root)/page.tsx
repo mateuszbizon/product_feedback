@@ -1,7 +1,16 @@
-import Image from "next/image";
+import HomeHeaderMobile from "@/components/home/HomeHeaderMobile";
+
 
 export default function Home() {
   return (
-    <h1>Hello World</h1>
+    <div className="flex flex-col">
+      <div>
+        <HomeHeaderMobile />
+      </div>
+      
+      <div>
+
+      </div>
+    </div>
   );
 }
