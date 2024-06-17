@@ -2,3 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .text-h1 {
+        @apply font-bold text-2xl leading-[35px]
+    }
+
+    .text-h2 {
+        @apply font-bold text-xl leading-[29px]
+    }
+
+    .text-h3 {
+        @apply font-bold text-lg leading-[26px]
+    }
+
+    .text-h4 {
+        @apply font-bold text-sm leading-[20px]
+    }
+
+    .text-regular-1 {
+        @apply font-normal text-base leading-[23px]
+    }
+
+    .text-regular-2 {
+        @apply font-normal text-[15px] leading-[22px]
+    }
+
+    .text-regular-3 {
+        @apply font-semibold text-[13px] leading-[19px]
+    }
+}
