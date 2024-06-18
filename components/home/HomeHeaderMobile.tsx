@@ -12,7 +12,7 @@ function HomeHeaderMobile() {
 
   return (
     <div className='h-home-header-height md:hidden'>
-        <div className='flex justify-between bg-background-header-mobile bg-center bg-cover px-6 py-3'>
+        <div className='flex justify-between bg-background-header-mobile bg-center bg-cover px-6 py-3 h-full'>
             <div className='flex flex-col'>
                 <span className='font-bold text-[15px] text-light-1'>Frontend Mentor</span>
                 <span className='text-[13px] text-light-1'>Feedback Board</span>
