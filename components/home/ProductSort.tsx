@@ -36,7 +36,7 @@ function ProductSort() {
 						return (
 							<ProductSortCard
 								key={item}
-								productSort={item}
+								sortItem={item}
 								activeSortItem={activeSortItem}
 								setActiveSortItem={setActiveSortItem}
 								setSortModalOpen={setSortModalOpen}
