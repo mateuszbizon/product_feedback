@@ -23,6 +23,7 @@ const config: Config = {
         "primary-2-bright": "#7C91F9",
         "primary-3": "#62BCFA",
         "primary-4": "#F49F85",
+        "primary-5": "#8397F8",
         "error-1": "#D73737",
         "error-1-bright": "#E98888",
       },
