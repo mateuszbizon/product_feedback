@@ -1,5 +1,6 @@
 import HomeHeaderMobile from "@/components/home/HomeHeaderMobile";
-import ProductSort from "@/components/home/ProductSort";
+import SortProducts from "@/components/home/SortProducts";
+
 
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
       </div>
       
       <div>
-        <ProductSort />
+        <SortProducts />
       </div>
     </div>
   );

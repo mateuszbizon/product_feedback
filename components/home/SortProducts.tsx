@@ -5,9 +5,9 @@ import IconArrowDown from "../icons/IconArrowDown";
 import Link from "next/link";
 import IconPlus from "../icons/IconPlus";
 import { PRODUCT_SORT_LIST } from "@/constants";
-import ProductSortCard from "../cards/ProductSortCard";
+import SortProductsCard from "../cards/SortProductsCard";
 
-function ProductSort() {
+function SortProducts() {
 	const [activeSortItem, setActiveSortItem] = useState<string>(
 		PRODUCT_SORT_LIST[0]
 	);
@@ -34,7 +34,7 @@ function ProductSort() {
 					} transition-all duration-300`}>
 					{PRODUCT_SORT_LIST.map(item => {
 						return (
-							<ProductSortCard
+							<SortProductsCard
 								key={item}
 								sortItem={item}
 								activeSortItem={activeSortItem}
@@ -55,4 +55,4 @@ function ProductSort() {
 	);
 }
 
-export default ProductSort;
+export default SortProducts;

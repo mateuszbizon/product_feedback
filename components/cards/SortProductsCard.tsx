@@ -10,7 +10,7 @@ type Props = {
     setSortModalOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-function ProductSortCard({ sortItem, activeSortItem, setActiveSortItem, setSortModalOpen }: Props) {
+function SortProductsCard({ sortItem, activeSortItem, setActiveSortItem, setSortModalOpen }: Props) {
     function handleActiveSortItem(item: string) {
         setActiveSortItem(item)
         setSortModalOpen(false)
@@ -21,4 +21,4 @@ function ProductSortCard({ sortItem, activeSortItem, setActiveSortItem, setSortM
   )
 }
 
-export default ProductSortCard
+export default SortProductsCard

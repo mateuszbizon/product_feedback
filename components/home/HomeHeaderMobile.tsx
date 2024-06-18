@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import IconHamburger from '../icons/IconHamburger'
-import ProductFilters from './ProductFilters'
+import FilterProducts from './FilterProducts'
 import IconClose from '../icons/IconClose'
 import SideBarShadow from './SideBarShadow'
 import RoadMap from './RoadMap'
@@ -21,7 +21,7 @@ function HomeHeaderMobile() {
         </div>
 
         <aside className={`flex flex-col gap-5 fixed right-0 top-home-header-height h-[calc(100vh-theme(height.home-header-height))] bg-light-3 w-[270px] z-20 px-6 py-3 ${sideBarOpen ? "translate-x-0" : "translate-x-full"} transition-all duration-300`}>
-          <ProductFilters />
+          <FilterProducts />
           <RoadMap />
         </aside>
 

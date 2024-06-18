@@ -8,7 +8,7 @@ type Props = {
     setActiveFilterItem: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function ProductFiltersCard({ filterItem, activeFilterItem, setActiveFilterItem }: Props) {
+function FilterProductsCard({ filterItem, activeFilterItem, setActiveFilterItem }: Props) {
   return (
     <button className={`btn-1 ${activeFilterItem === filterItem ? "btn-1-active" : "btn-1-not-active"}`} onClick={() => setActiveFilterItem(filterItem)}>
         {filterItem}
@@ -16,4 +16,4 @@ function ProductFiltersCard({ filterItem, activeFilterItem, setActiveFilterItem 
   )
 }
 
-export default ProductFiltersCard
+export default FilterProductsCard
