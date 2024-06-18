@@ -46,4 +46,8 @@
     .btn-1-not-active {
         @apply bg-light-3 text-primary-2;
     }
+
+    .btn-2 {
+        @apply bg-primary-1 text-light-1 text-[13px] rounded-lg p-3 font-bold hover:bg-primary-1-bright transition duration-300;
+    }
 }
