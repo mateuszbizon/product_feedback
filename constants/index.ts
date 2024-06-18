@@ -1,0 +1,1 @@
+export const PRODUCT_FILTERS_LIST = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"]

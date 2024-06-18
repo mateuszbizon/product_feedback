@@ -12,6 +12,7 @@ const config: Config = {
         "light-1": "#ffffff",
         "light-2": "#F7F8FD",
         "light-3": "#F2F4FF",
+        "light-4": "#CFD7FF",
         "dark-1": "#373F68",
         "dark-2": "#3A4374",
         "dark-2-bright": "#656EA3",

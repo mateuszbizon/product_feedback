@@ -1,5 +1,8 @@
+"use client"
+
 import React from 'react'
 import IconHamburger from '../icons/IconHamburger'
+import ProductFilters from './ProductFilters'
 
 function HomeHeaderMobile() {
   return (
@@ -11,8 +14,8 @@ function HomeHeaderMobile() {
             </div>
             <button><IconHamburger /></button>
         </div>
-        <aside className='absolute right-0 top-home-header-height h-[calc(100vh-theme(height.home-header-height))] bg-light-1 w-[250px] z-20'>
-
+        <aside className='absolute right-0 top-home-header-height h-[calc(100vh-theme(height.home-header-height))] bg-light-3 w-[270px] z-20 px-6 py-3'>
+          <ProductFilters />
         </aside>
     </div>
   )
