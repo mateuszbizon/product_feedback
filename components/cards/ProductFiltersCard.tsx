@@ -10,7 +10,7 @@ type Props = {
 
 function ProductFiltersCard({ productFilter, filterActive, setFilterActive }: Props) {
   return (
-    <button className={`py-2 px-4 rounded-lg font-semibold text-[13px] hover:bg-light-4 transition duration-300 ${filterActive === productFilter ? "bg-primary-2 text-light-1" : "bg-light-3 text-primary-2"}`} onClick={() => setFilterActive(productFilter)}>
+    <button className={`btn-1 ${filterActive === productFilter ? "btn-1-active" : "btn-1-not-active"}`} onClick={() => setFilterActive(productFilter)}>
         {productFilter}
     </button>
   )
