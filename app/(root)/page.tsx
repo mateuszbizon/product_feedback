@@ -5,8 +5,8 @@ import Products from "@/components/products/Products";
 
 export default function Home() {
   return (
-    <div className="flex flex-col md:gap-12 md:padding-top padding-bottom">
-      <div>
+    <div className="flex flex-col xl:flex-row md:gap-12 xl:gap-6 md:padding-top padding-bottom">
+      <div className="xl:w-1/5">
         <HomeHeaderMobile />
         <HomeHeaderDesktop />
       </div>

@@ -4,8 +4,8 @@ import RoadMap from './RoadMap'
 
 function HomeHeaderDesktop() {
   return (
-    <div className='hidden md:grid grid-cols-3 gap-5'>
-        <div className='flex flex-col justify-end bg-background-header-tablet bg-center bg-cover h-full text-light-1 rounded-lg p-6'>
+    <div className='hidden md:grid grid-cols-3 xl:grid-cols-1 gap-5'>
+        <div className='flex flex-col justify-end bg-background-header-tablet bg-center bg-cover xl:h-[135px] text-light-1 rounded-lg p-6'>
             <h1 className='text-2 font-bold'>Frontend Mentor</h1>
             <span className='text-5'>Feedback Board</span>
         </div>
