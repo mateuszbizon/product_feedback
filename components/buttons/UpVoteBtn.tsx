@@ -9,7 +9,7 @@ function UpVoteBtn() {
         <div className='text-primary-2'>
             <IconArrowUp />
         </div>
-        <span className='font-bold text-[13px] text-dark-2'>112</span>
+        <span className='text-regular-3 font-bold text-dark-2'>112</span>
     </button>
   )
 }
