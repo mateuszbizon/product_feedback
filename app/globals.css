@@ -47,9 +47,8 @@
         @apply pb-5 md:pb-10
     }
 
-
     .btn-1 {
-        @apply py-2 px-4 rounded-lg font-semibold text-[13px] hover:bg-light-4 transition duration-300;
+        @apply py-2 px-4 rounded-lg font-semibold text-[13px];
     }
 
     .btn-1-active {
@@ -57,7 +56,7 @@
     }
 
     .btn-1-not-active {
-        @apply bg-light-3 text-primary-2;
+        @apply bg-light-3 text-primary-2 hover:bg-light-4 transition duration-300;
     }
 
     .btn-2 {
