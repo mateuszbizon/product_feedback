@@ -35,6 +35,10 @@
         @apply w-full mx-auto md:w-[90%] xl:w-[80%]
     }
 
+    .inner-container-1 {
+        @apply w-[90%] mx-auto md:w-full;
+    }
+
     .btn-1 {
         @apply py-2 px-4 rounded-lg font-semibold text-[13px] hover:bg-light-4 transition duration-300;
     }
@@ -49,5 +53,13 @@
 
     .btn-2 {
         @apply bg-primary-1 text-light-1 text-[13px] rounded-lg p-3 font-bold hover:bg-primary-1-bright transition duration-300;
+    }
+
+    .product {
+        @apply p-5 rounded-lg bg-light-1;
+    }
+
+    .filter-box {
+        @apply py-2 px-4 rounded-lg font-semibold text-[13px] bg-light-3 text-primary-2;
     }
 }

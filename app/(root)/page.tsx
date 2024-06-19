@@ -1,7 +1,6 @@
 import HomeHeaderMobile from "@/components/home/HomeHeaderMobile";
 import SortProducts from "@/components/home/SortProducts";
-
-
+import Products from "@/components/products/Products";
 
 export default function Home() {
   return (
@@ -12,6 +11,7 @@ export default function Home() {
       
       <div>
         <SortProducts />
+        <Products />
       </div>
     </div>
   );
