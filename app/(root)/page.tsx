@@ -11,7 +11,7 @@ export default function Home() {
         <HomeHeaderDesktop />
       </div>
       
-      <div>
+      <div className="xl:w-4/5">
         <SortProducts />
         <Products />
       </div>
