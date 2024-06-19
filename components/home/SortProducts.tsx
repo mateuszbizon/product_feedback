@@ -6,6 +6,7 @@ import Link from "next/link";
 import IconPlus from "../icons/IconPlus";
 import { PRODUCT_SORT_LIST } from "@/constants";
 import SortProductsCard from "../cards/SortProductsCard";
+import AddFeedbackLink from "../buttons/AddFeedbackLink";
 
 function SortProducts() {
 	const [activeSortItem, setActiveSortItem] = useState<string>(
@@ -46,11 +47,7 @@ function SortProducts() {
 				</ul>
 			</div>
 
-			<Link
-				href='#'
-				className='flex gap-1 items-center btn-2 whitespace-nowrap'>
-				<IconPlus /> Add Feedback
-			</Link>
+			<AddFeedbackLink />
 		</div>
 	);
 }
