@@ -15,7 +15,7 @@ function SortProducts() {
 	const [sortModalOpen, setSortModalOpen] = useState(false);
 
 	return (
-		<div className='flex justify-between items-center bg-dark-1 px-6 py-2 rounded-lg'>
+		<div className='flex justify-between items-center bg-dark-1 px-6 py-2 md:rounded-lg'>
 			<div className='relative'>
 				<button
 					className='flex items-center gap-1 font-bold text-[13px] text-light-1 whitespace-nowrap hover:text-light-3 transition duration-300'
