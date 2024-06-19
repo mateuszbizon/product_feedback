@@ -39,6 +39,15 @@
         @apply w-[90%] mx-auto md:w-full;
     }
 
+    .padding-top {
+        @apply pt-5 md:pt-10;
+    }
+
+    .padding-bottom {
+        @apply pb-5 md:pb-10
+    }
+
+
     .btn-1 {
         @apply py-2 px-4 rounded-lg font-semibold text-[13px] hover:bg-light-4 transition duration-300;
     }
