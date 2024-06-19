@@ -29,6 +29,7 @@ const config: Config = {
       },
       backgroundImage: {
         "background-header-mobile": "url('/background-header-mobile.png')",
+        "background-header-tablet": "url('/background-header-tablet.png')",
       },
       height: {
         "home-header-height": "70px",
