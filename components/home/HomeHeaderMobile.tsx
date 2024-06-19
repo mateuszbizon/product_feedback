@@ -14,8 +14,8 @@ function HomeHeaderMobile() {
     <div className='h-home-header-height md:hidden'>
         <div className='flex justify-between bg-background-header-mobile bg-center bg-cover px-6 py-3 h-full'>
             <div className='flex flex-col'>
-                <h1 className='text-regular-2 font-bold text-light-1'>Frontend Mentor</h1>
-                <span className='text-regular-3 font-normal text-light-1'>Feedback Board</span>
+                <h1 className='text-5 font-bold text-light-1'>Frontend Mentor</h1>
+                <span className='text-7 text-light-1'>Feedback Board</span>
             </div>
             <button onClick={() => setSideBarOpen(prev => !prev)}>{sideBarOpen ? <IconClose /> : <IconHamburger />}</button>
         </div>

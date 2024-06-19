@@ -18,7 +18,7 @@ function SortProducts() {
 		<div className='flex justify-between items-center bg-dark-1 px-6 py-2 md:rounded-lg'>
 			<div className='relative'>
 				<button
-					className='flex items-center gap-1 font-bold text-[13px] text-light-1 whitespace-nowrap hover:text-light-3 transition duration-300'
+					className='flex items-center gap-1 font-bold text-7 text-light-1 whitespace-nowrap hover:text-light-3 transition duration-300'
 					onClick={() => setSortModalOpen(prev => !prev)}>
 					<span className='font-normal text-light-3'>Sort by:</span> 
                     {activeSortItem}
