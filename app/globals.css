@@ -64,7 +64,7 @@
     }
 
     .product {
-        @apply p-5 rounded-lg bg-light-1;
+        @apply p-5 md:p-7 rounded-lg bg-light-1;
     }
 
     .filter-box {
