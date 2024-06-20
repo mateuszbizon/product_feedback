@@ -3,31 +3,71 @@
 @tailwind utilities;
 
 @layer components {
-    .text-h1 {
-        @apply font-bold text-2xl leading-[35px]
+    .text-1 {
+        @apply text-2xl leading-[35px]
     }
 
-    .text-h2 {
-        @apply font-bold text-xl leading-[29px]
+    .text-2 {
+        @apply text-xl leading-[29px]
     }
 
-    .text-h3 {
-        @apply font-bold text-lg leading-[26px]
+    .text-3 {
+        @apply text-lg leading-[26px]
     }
 
-    .text-h4 {
-        @apply font-bold text-sm leading-[20px]
+    .text-4 {
+        @apply text-base leading-[23px]
     }
 
-    .text-regular-1 {
-        @apply font-normal text-base leading-[23px]
+    .text-5 {
+        @apply text-[15px] leading-[22px]
     }
 
-    .text-regular-2 {
-        @apply font-normal text-[15px] leading-[22px]
+    .text-6 {
+        @apply text-sm leading-[20px]
     }
 
-    .text-regular-3 {
-        @apply font-semibold text-[13px] leading-[19px]
+    .text-7 {
+        @apply text-[13px] leading-[19px]
+    }
+
+    .main-container {
+        @apply w-full mx-auto md:w-[90%] xl:w-[80%]
+    }
+
+    .inner-container-1 {
+        @apply w-[90%] mx-auto md:w-full;
+    }
+
+    .padding-top {
+        @apply pt-5 md:pt-10;
+    }
+
+    .padding-bottom {
+        @apply pb-5 md:pb-10
+    }
+
+    .btn-1 {
+        @apply py-2 px-4 rounded-lg font-semibold text-[13px];
+    }
+
+    .btn-1-active {
+        @apply bg-primary-2 text-light-1;
+    }
+
+    .btn-1-not-active {
+        @apply bg-light-3 text-primary-2 hover:bg-light-4 transition duration-300;
+    }
+
+    .btn-2 {
+        @apply bg-primary-1 text-light-1 text-[13px] rounded-lg p-3 font-bold hover:bg-primary-1-bright transition duration-300;
+    }
+
+    .product {
+        @apply p-5 md:p-7 rounded-lg bg-light-1;
+    }
+
+    .filter-box {
+        @apply py-2 px-4 rounded-lg font-semibold text-[13px] bg-light-3 text-primary-2;
     }
 }
