@@ -60,7 +60,11 @@
     }
 
     .btn-2 {
-        @apply bg-primary-1 text-light-1 text-[13px] rounded-lg p-3 font-bold hover:bg-primary-1-bright transition duration-300;
+        @apply bg-primary-1 text-light-1 text-[13px] rounded-lg p-3 font-bold px-5 py-3 hover:bg-primary-1-bright transition duration-300;
+    }
+
+    .btn-3 {
+        @apply bg-primary-2 text-light-3 text-[13px] rounded-xl font-bold px-5 py-3 hover:bg-primary-2-bright transition duration-300
     }
 
     .product {
