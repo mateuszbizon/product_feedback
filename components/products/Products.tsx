@@ -1,5 +1,5 @@
 import React from 'react'
-import Product from './Product'
+import ProductCard from './ProductCard'
 import NoProducts from './NoProducts'
 
 function Products() {
