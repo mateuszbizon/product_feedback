@@ -68,7 +68,7 @@
     }
 
     .btn-2 {
-        @apply bg-primary-1 text-light-1 text-[13px] rounded-lg p-3 font-bold px-5 py-3 hover:bg-primary-1-bright transition duration-300;
+        @apply bg-primary-1 text-light-1 text-[13px] rounded-xl p-3 font-bold px-5 py-3 hover:bg-primary-1-bright transition duration-300;
     }
 
     .btn-3 {
