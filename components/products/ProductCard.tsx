@@ -4,7 +4,7 @@ import IconComments from '../icons/IconComments'
 
 function ProductCard() {
   return (
-    <div className='product flex flex-col md:flex-row md:justify-between gap-3'>
+    <div className='container-4 flex flex-col md:flex-row md:justify-between gap-3'>
         <div className='flex flex-col md:flex-row gap-8'>
           <div className='hidden md:block'>
             <UpVoteBtn />

@@ -19,9 +19,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${jost.className} bg-light-3`}>
-          <div className="main-container">
-            {children}
-          </div>
+          {children}
         </body>
       </html>
     </ClerkProvider>

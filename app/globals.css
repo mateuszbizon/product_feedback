@@ -31,12 +31,20 @@
         @apply text-[13px] leading-[19px]
     }
 
-    .main-container {
+    .container-1 {
         @apply w-full mx-auto md:w-[90%] xl:w-[80%]
     }
 
-    .inner-container-1 {
+    .container-2 {
         @apply w-[90%] mx-auto md:w-full;
+    }
+
+    .container-3 {
+        @apply w-[90%] mx-auto xl:w-[80%]
+    }
+
+    .container-4 {
+        @apply p-5 md:p-7 rounded-lg bg-light-1;
     }
 
     .padding-top {
@@ -65,10 +73,6 @@
 
     .btn-3 {
         @apply bg-primary-2 text-light-3 text-[13px] rounded-xl font-bold px-5 py-3 hover:bg-primary-2-bright transition duration-300
-    }
-
-    .product {
-        @apply p-5 md:p-7 rounded-lg bg-light-1;
     }
 
     .filter-box {

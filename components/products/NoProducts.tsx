@@ -4,7 +4,7 @@ import AddFeedbackLink from '../buttons/AddFeedbackLink'
 
 function NoProducts() {
   return (
-    <div className='product flex flex-col items-center gap-4 py-20'>
+    <div className='container-4 flex flex-col items-center gap-4 py-20'>
         <div className='mb-5'>
             <IconIllustrationEmpty />
         </div>
