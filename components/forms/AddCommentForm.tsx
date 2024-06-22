@@ -8,7 +8,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 
 function AddCommentForm() {
-  const { register, handleSubmit, formState: { errors } } = useForm<CommentSchemaType>({
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<CommentSchemaType>({
     resolver: zodResolver(commentSchema),
     defaultValues: {
       comment: "",
@@ -22,6 +22,8 @@ function AddCommentForm() {
 
   function onSubmit(data: CommentSchemaType) {
     console.log(data)
+    reset()
+    handleSetCharactersLeft("")
   }
 
   return (

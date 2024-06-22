@@ -10,7 +10,7 @@ type Props = {
 }
 
 function AddReplyForm({ setReplyFormOpen }: Props) {
-    const { handleSubmit, register, formState: { errors } } = useForm<ReplySchemaType>({
+    const { handleSubmit, register, formState: { errors }, reset } = useForm<ReplySchemaType>({
         resolver: zodResolver(replySchema),
         defaultValues: {
             reply: "",
@@ -20,6 +20,7 @@ function AddReplyForm({ setReplyFormOpen }: Props) {
     function onSubmit(data: ReplySchemaType) {
         console.log(data)
         setReplyFormOpen(false)
+        reset();
     }
 
   return (
