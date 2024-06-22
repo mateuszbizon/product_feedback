@@ -31,12 +31,20 @@
         @apply text-[13px] leading-[19px]
     }
 
-    .main-container {
+    .container-1 {
         @apply w-full mx-auto md:w-[90%] xl:w-[80%]
     }
 
-    .inner-container-1 {
+    .container-2 {
         @apply w-[90%] mx-auto md:w-full;
+    }
+
+    .container-3 {
+        @apply w-[90%] mx-auto xl:w-[80%]
+    }
+
+    .container-4 {
+        @apply p-5 md:p-7 rounded-lg bg-light-1;
     }
 
     .padding-top {
@@ -60,14 +68,26 @@
     }
 
     .btn-2 {
-        @apply bg-primary-1 text-light-1 text-[13px] rounded-lg p-3 font-bold hover:bg-primary-1-bright transition duration-300;
+        @apply bg-primary-1 text-light-1 text-[13px] rounded-xl p-3 font-bold px-5 py-3 hover:bg-primary-1-bright transition duration-300;
     }
 
-    .product {
-        @apply p-5 md:p-7 rounded-lg bg-light-1;
+    .btn-3 {
+        @apply bg-primary-2 text-light-3 text-[13px] rounded-xl font-bold px-5 py-3 hover:bg-primary-2-bright transition duration-300
     }
 
     .filter-box {
         @apply py-2 px-4 rounded-lg font-semibold text-[13px] bg-light-3 text-primary-2;
+    }
+
+    .input-1 {
+        @apply bg-light-2 w-full p-4 text-7 md:text-5 placeholder:text-7 md:placeholder:text-5 rounded-md outline-none focus:border focus:border-primary-2
+    }
+
+    .input-error-1 {
+        @apply border border-error-1 focus:border-error-1
+    }
+
+    .input-error-message {
+        @apply text-error-1 text-6;
     }
 }
