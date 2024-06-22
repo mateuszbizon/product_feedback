@@ -1,25 +1,39 @@
 "use client"
 
+import { COMMENT_MAX_LENGTH } from '@/constants';
 import useCharactersLeft from '@/hooks/useCharactersLeft';
-import React, { useState } from 'react'
-
-const MAX_LENGTH = 250;
+import { CommentSchemaType, commentSchema } from '@/validations/commentSchema';
+import { zodResolver } from '@hookform/resolvers/zod';
+import React from 'react'
+import { useForm } from 'react-hook-form';
 
 function AddCommentForm() {
-  const { charactersLeft, handleSetCharactersLeft } = useCharactersLeft(MAX_LENGTH);
-  const [commentValue, setCommentValue] = useState("")
+  const { register, handleSubmit, formState: { errors } } = useForm<CommentSchemaType>({
+    resolver: zodResolver(commentSchema),
+    defaultValues: {
+      comment: "",
+    }
+  })
+  const { charactersLeft, handleSetCharactersLeft } = useCharactersLeft(COMMENT_MAX_LENGTH);
   
   function handleChangeTextarea(e: React.ChangeEvent<HTMLTextAreaElement>) {
     handleSetCharactersLeft(e.target.value)
-    setCommentValue(e.target.value)
+  }
+
+  function onSubmit(data: CommentSchemaType) {
+    console.log(data)
   }
 
   return (
     <div className='space-y-5'>
         <span className='text-3 text-dark-2 font-bold'>Add Comment</span>
-        <form className='space-y-3'>
-            <div>
-                <textarea className='input-1 resize-none' placeholder='Type your comment here' maxLength={MAX_LENGTH} onChange={handleChangeTextarea} value={commentValue}></textarea>
+        <form className='space-y-3' onSubmit={handleSubmit(onSubmit)}>
+            <div className='flex flex-col gap-1'>
+                <textarea className={`input-1 ${errors.comment && "input-error-1"} resize-none`} placeholder='Type your comment here' maxLength={COMMENT_MAX_LENGTH} {...register("comment", {
+                  onChange: (e) => handleChangeTextarea(e)
+                })}></textarea>
+
+                <span className={`${errors.comment ? "visible" : "invisible"} text-error-1`}>{errors.comment ? errors.comment.message : "error"}</span>
             </div>
             <div className='flex justify-between items-center'>
                 <span className='text-5 text-dark-3'>{charactersLeft} characters left</span>
