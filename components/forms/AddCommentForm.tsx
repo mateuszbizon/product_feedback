@@ -33,7 +33,7 @@ function AddCommentForm() {
                   onChange: (e) => handleChangeTextarea(e)
                 })}></textarea>
 
-                <span className={`${errors.comment ? "visible" : "invisible"} text-error-1`}>{errors.comment ? errors.comment.message : "error"}</span>
+                <span className={`${errors.comment ? "visible" : "invisible"} input-error-message`}>{errors.comment ? errors.comment.message : "error"}</span>
             </div>
             <div className='flex justify-between items-center'>
                 <span className='text-5 text-dark-3'>{charactersLeft} characters left</span>

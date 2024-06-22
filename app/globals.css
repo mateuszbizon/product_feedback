@@ -86,4 +86,8 @@
     .input-error-1 {
         @apply border border-error-1 focus:border-error-1
     }
+
+    .input-error-message {
+        @apply text-error-1 text-6;
+    }
 }
