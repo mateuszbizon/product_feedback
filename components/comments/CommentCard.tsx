@@ -1,9 +1,14 @@
+"use client"
+
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 import ReplyBtn from '../buttons/ReplyBtn'
 import ReplyCard from './ReplyCard'
+import AddReplyForm from '../forms/AddReplyForm'
 
 function CommentCard() {
+    const [replyFormOpen, setReplyFormOpen] = useState(false)
+
   return (
     <div className='space-y-5 pt-5 first:p-0'>
         <div className='flex justify-between items-center'>
@@ -17,12 +22,16 @@ function CommentCard() {
                 </div>
             </div>
 
-            <ReplyBtn />
+            <ReplyBtn setReplyFormOpen={setReplyFormOpen} />
         </div>
 
         <p className='text-7 md:text-5 text-dark-3'>
             Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my device’s dark mode turns on without the bright background it currently has.
         </p>
+
+        <div className={`${replyFormOpen ? "max-h-[1000px]" : "max-h-0"} overflow-hidden w-full transition-all duration-400`}>
+            <AddReplyForm setReplyFormOpen={setReplyFormOpen} />
+        </div>
 
         <div className='flex gap-5'>
             <div className='flex'>
