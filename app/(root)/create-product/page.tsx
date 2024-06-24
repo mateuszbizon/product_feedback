@@ -1,5 +1,5 @@
 import GoBackBtn from '@/components/buttons/GoBackBtn'
-import AddCommentForm from '@/components/forms/AddCommentForm'
+import CreateProductForm from '@/components/forms/CreateProductForm'
 import React from 'react'
 
 function CreateProductPage() {
@@ -8,9 +8,7 @@ function CreateProductPage() {
         <div>
             <GoBackBtn />
         </div>
-        <div className='container-4'>
-            <AddCommentForm />
-        </div>
+        <CreateProductForm />
     </div>
   )
 }

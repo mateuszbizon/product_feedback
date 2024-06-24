@@ -90,4 +90,12 @@
     .input-error-message {
         @apply text-error-1 text-6;
     }
+
+    .label-1 {
+        @apply text-7 md:text-6 font-bold mb-2 text-dark-2;
+    }
+
+    .input-help-text-1 {
+        @apply text-7 md:text-6 mb-3 text-dark-3
+    }
 }
