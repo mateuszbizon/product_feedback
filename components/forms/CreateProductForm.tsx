@@ -19,13 +19,13 @@ function CreateProductForm() {
             <div className='flex flex-col'>
                 <label htmlFor="detail" className='label-1'>Feedback Detail</label>
                 <span className='input-help-text-1'>Include any specific comments on what should be improved, added, etc.</span>
-                <textarea id="detail" className='input-1' rows={3}></textarea>
+                <textarea id="detail" className='input-1 resize-none' rows={3}></textarea>
                 <span className='input-error-message'>error</span>
             </div>
 
             <div className='flex flex-col gap-4 mt-3'>
                 <button type='submit' className='btn-2'>Add Feedback</button>
-                <button type='button' className='btn-2'>Cancel</button>
+                <button type='button' className='btn-4'>Cancel</button>
             </div>
         </form>
     </div>
