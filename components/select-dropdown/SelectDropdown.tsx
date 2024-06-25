@@ -2,6 +2,7 @@
 
 import React from 'react'
 import IconCheck from '../icons/IconCheck';
+import useClickOutside from '@/hooks/useClickOutside';
 
 type Props = {
     dropdownList: string[];
@@ -13,6 +14,8 @@ type Props = {
 }
 
 function SelectDropdown({ dropdownList, dropdownOpen, activeItem, setDropdownOpen, setActiveItem, topOffset }: Props) {
+    const dropdownRef = useClickOutside<HTMLUListElement>(() => setDropdownOpen(false), dropdownOpen)
+
     function handleClickDropdownItem(item: string) {
         setDropdownOpen(false)
         setActiveItem(item)
@@ -20,6 +23,7 @@ function SelectDropdown({ dropdownList, dropdownOpen, activeItem, setDropdownOpe
 
   return (
     <ul 
+        ref={dropdownRef}
 		className={`flex flex-col absolute top-12 left-0 bg-light-1 w-full rounded-lg shadow-lg transition-all duration-300 ${dropdownOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} style={{ top: `${topOffset}px` }}>
         {dropdownList.map((item) => {
             return (
