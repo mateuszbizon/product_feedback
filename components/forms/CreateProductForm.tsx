@@ -1,7 +1,16 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
 import IconNewFeedback from '../icons/IconNewFeedback'
+import IconArrowDown from '../icons/IconArrowDown'
+import SelectDropdown from '../select-dropdown/SelectDropdown'
+import { PRODUCT_FILTERS_LIST } from '@/constants'
+import SelectButton from '../select-dropdown/SelectButton'
 
 function CreateProductForm() {
+    const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false)
+    const [categoryItem, setCategoryItem] = useState(PRODUCT_FILTERS_LIST[0])
+
   return (
     <div className='container-4 relative pt-5 space-y-6'>
         <div className='absolute -top-7 left-7'>
@@ -14,6 +23,15 @@ function CreateProductForm() {
                 <span className='input-help-text-1'>Add a short, descriptive headline</span>
                 <input id="title" type="text" className='input-1' />
                 <span className='input-error-message'>error</span>
+            </div>
+
+            <div className='flex flex-col'>
+                <label className='label-1'>Category</label>
+                <span className='input-help-text-1'>Choose category for your feedback</span>
+                <div className='relative'>
+                    <SelectButton activeItem={categoryItem} setDropdownOpen={setCategoryDropdownOpen} />
+                    <SelectDropdown dropdownList={PRODUCT_FILTERS_LIST} dropdownOpen={categoryDropdownOpen} setDropdownOpen={setCategoryDropdownOpen} activeItem={categoryItem} setActiveItem={setCategoryItem} topOffset={60} />
+                </div>
             </div>
 
             <div className='flex flex-col'>

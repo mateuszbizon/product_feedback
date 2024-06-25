@@ -84,7 +84,7 @@
     }
 
     .input-1 {
-        @apply bg-light-2 w-full p-4 text-7 md:text-5 placeholder:text-7 md:placeholder:text-5 rounded-md outline-none focus:border focus:border-primary-2
+        @apply bg-light-2 w-full py-3 px-5 text-7 md:text-5 placeholder:text-7 md:placeholder:text-5 rounded-md outline-none focus:border focus:border-primary-2
     }
 
     .input-error-1 {
