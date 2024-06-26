@@ -12,7 +12,7 @@ function SelectButton({ activeItem, setDropdownOpen }: Props) {
   return (
     <button
         type='button' 
-        className='input-1 flex justify-between items-center' onClick={() => setDropdownOpen(prev => !prev)}>
+        className='input-1 flex justify-between items-center cursor-default' onClick={() => setDropdownOpen(prev => !prev)}>
         {activeItem} <div className='text-primary-2'><IconArrowDown /></div>
     </button>
   )
