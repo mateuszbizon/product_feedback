@@ -4,6 +4,8 @@ import { ReplySchemaType, replySchema } from '@/validations/replySchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import Textarea from '../ui/Textarea'
+import InputErrorMessage from './InputErrorMessage'
 
 type Props = {
     setReplyFormOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -26,8 +28,8 @@ function AddReplyForm({ setReplyFormOpen }: Props) {
   return (
     <form className='flex gap-5' onSubmit={handleSubmit(onSubmit)}>
         <div className='w-full'>
-            <textarea {...register("reply")} className={`input-1 ${errors.reply && "input-error-1"} resize-none`} placeholder='Type your reply here'></textarea>
-            <span className={`input-error-message ${errors.reply ? "visible" : "invisible"}`}>{errors.reply ? errors.reply.message : "error"}</span>
+            <Textarea name='reply' register={register} errors={errors.reply} placeholder='Type your reply here' />
+            <InputErrorMessage errors={errors.reply} />
         </div>
         <div>
             <button type='submit' className='btn-2 whitespace-nowrap'>Post Reply</button>

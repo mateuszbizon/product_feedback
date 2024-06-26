@@ -8,6 +8,9 @@ import SelectButton from '../select-dropdown/SelectButton'
 import { useForm } from 'react-hook-form'
 import { ProductSchemaType, productSchema } from '@/validations/productSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Input from '../ui/Input'
+import Textarea from '../ui/Textarea'
+import InputErrorMessage from './InputErrorMessage'
 
 function CreateProductForm() {
     const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false)
@@ -40,8 +43,8 @@ function CreateProductForm() {
             <div className='flex flex-col'>
                 <label htmlFor="title" className='label-1'>Feedback Title</label>
                 <span className='input-help-text-1'>Add a short, descriptive headline</span>
-                <input {...register("title")} id="title" type="text" className={`input-1 ${errors.title && "input-error-1"}`} />
-                <span className={`input-error-message ${errors.title ? "visible" : "invisible"}`}>{errors.title ? errors.title.message : "error"}</span>
+                <Input id='title' name='title' register={register} errors={errors.title} />
+                <InputErrorMessage errors={errors.title} />
             </div>
 
             <div className='flex flex-col'>
@@ -54,10 +57,10 @@ function CreateProductForm() {
             </div>
 
             <div className='flex flex-col'>
-                <label htmlFor="detail" className='label-1'>Feedback Detail</label>
+                <label htmlFor="details" className='label-1'>Feedback Detail</label>
                 <span className='input-help-text-1'>Include any specific comments on what should be improved, added, etc.</span>
-                <textarea {...register("details")} id="detail" className={`input-1 ${errors.details && "input-error-1"}`} rows={3}></textarea>
-                <span className={`input-error-message ${errors.details ? "visible" : "invisible"}`}>{errors.details ? errors.details.message : "error"}</span>
+                <Textarea id='details' name='details' register={register} errors={errors.details} />
+                <InputErrorMessage errors={errors.details} />
             </div>
 
             <div className='flex flex-col gap-4 mt-3'>
