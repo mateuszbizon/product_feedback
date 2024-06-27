@@ -8,6 +8,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import InputErrorMessage from './InputErrorMessage';
 import Textarea from '../ui/Textarea';
+import Button from '../ui/Button';
 
 function AddCommentForm() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<CommentSchemaType>({
@@ -41,7 +42,7 @@ function AddCommentForm() {
             </div>
             <div className='flex justify-between items-center'>
                 <span className='text-5 text-dark-3'>{charactersLeft} characters left</span>
-                <button type='submit' className='btn-2 whitespace-nowrap'>Post Comment</button>
+                <Button type='submit' className='whitespace-nowrap'>Post Comment</Button>
             </div>
         </form>
     </div>

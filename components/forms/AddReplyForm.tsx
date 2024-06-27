@@ -6,6 +6,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import Textarea from '../ui/Textarea'
 import InputErrorMessage from './InputErrorMessage'
+import Button from '../ui/Button'
 
 type Props = {
     setReplyFormOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -32,7 +33,7 @@ function AddReplyForm({ setReplyFormOpen }: Props) {
             <InputErrorMessage errors={errors.reply} />
         </div>
         <div>
-            <button type='submit' className='btn-2 whitespace-nowrap'>Post Reply</button>
+            <Button type='submit' className='whitespace-nowrap'>Post Reply</Button>
         </div>
     </form>
   )

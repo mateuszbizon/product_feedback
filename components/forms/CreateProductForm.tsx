@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import Input from '../ui/Input'
 import Textarea from '../ui/Textarea'
 import InputErrorMessage from './InputErrorMessage'
+import Button from '../ui/Button'
 
 function CreateProductForm() {
     const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false)
@@ -64,8 +65,8 @@ function CreateProductForm() {
             </div>
 
             <div className='flex flex-col gap-4 mt-3'>
-                <button type='submit' className='btn-2'>Add Feedback</button>
-                <button type='button' className='btn-4'>Cancel</button>
+                <Button type='submit'>Add Feedback</Button>
+                <Button type='button' variant='third'>Cancel</Button>
             </div>
         </form>
     </div>

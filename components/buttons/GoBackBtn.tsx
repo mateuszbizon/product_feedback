@@ -3,12 +3,13 @@
 import React from 'react'
 import IconArrowLeft from '../icons/IconArrowLeft'
 import { useRouter } from 'next/navigation'
+import Button from '../ui/Button';
 
 function GoBackBtn() {
     const router = useRouter();
 
   return (
-    <button className='flex items-center gap-3 text-7 font-bold text-dark-3 hover:underline' onClick={() => router.back()}><IconArrowLeft /> Go Back</button>
+    <Button variant='go-back' className='flex items-center gap-3' onClick={() => router.back()}><IconArrowLeft /> Go Back</Button>
   )
 }
 
