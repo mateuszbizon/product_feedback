@@ -12,16 +12,22 @@ import Input from '../ui/Input'
 import Textarea from '../ui/Textarea'
 import InputErrorMessage from './InputErrorMessage'
 import Button from '../ui/Button'
+import { ProductModelType } from '@/types'
+import IconEditFeedback from '../icons/IconEditFeedback'
 
-function CreateProductForm() {
+type Props = {
+    product?: ProductModelType;
+}
+
+function CreateProductForm({ product }: Props) {
     const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false)
-    const [categoryItem, setCategoryItem] = useState(PRODUCT_FILTERS_LIST[0])
+    const [categoryItem, setCategoryItem] = useState(product ? product.category : PRODUCT_FILTERS_LIST[0])
     const { handleSubmit, register, formState: { errors }, setValue } = useForm<ProductSchemaType>({
         resolver: zodResolver(productSchema),
         defaultValues: {
-            title: "",
-            details: "",
-            category: PRODUCT_FILTERS_LIST[0],
+            title: product ? product.title : "",
+            details: product ? product.details : "",
+            category: product ? product.category : PRODUCT_FILTERS_LIST[0],
         }
     })
 
@@ -37,9 +43,9 @@ function CreateProductForm() {
   return (
     <div className='container-4 relative pt-5 space-y-6'>
         <div className='absolute -top-7 left-7'>
-            <IconNewFeedback />
+            {product ? <IconEditFeedback /> : <IconNewFeedback />}
         </div>
-        <h1 className='text-3 font-bold text-dark-2'>Create New Feedback</h1>
+        <h1 className='text-3 font-bold text-dark-2'>{product ? `Editing '${product.title}'` : "Create New Feedback"}</h1>
         <form className='flex flex-col gap-4' onSubmit={handleSubmit(onSubmit)}>
             <div className='flex flex-col'>
                 <label htmlFor="title" className='label-1'>Feedback Title</label>

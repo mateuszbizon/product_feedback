@@ -8,7 +8,7 @@ function EditProductPage() {
         <div>
             <GoBackBtn />
         </div>
-        <CreateProductForm />
+        <CreateProductForm product={{ _id: "1", title: "Add a dark theme option", details: "Some details", category: "UI" }} />
     </div>
   )
 }
