@@ -11,4 +11,5 @@ export type ProductModelType = {
     title: string;
     details: string;
     category: string;
+    status: string;
 }
