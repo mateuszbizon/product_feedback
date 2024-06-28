@@ -14,6 +14,7 @@ import InputErrorMessage from './InputErrorMessage'
 import Button from '../ui/Button'
 import { ProductModelType } from '@/types'
 import IconEditFeedback from '../icons/IconEditFeedback'
+import DeleteProductBtn from '../buttons/DeleteProductBtn'
 
 type Props = {
     product?: ProductModelType;
@@ -89,9 +90,16 @@ function CreateProductForm({ product }: Props) {
                 <InputErrorMessage errors={errors.details} />
             </div>
 
-            <div className='flex flex-col gap-4 mt-3'>
-                <Button type='submit'>Add Feedback</Button>
-                <Button type='button' variant='third'>Cancel</Button>
+            <div className='flex flex-col gap-4 md:flex-row-reverse md:justify-between mt-3'>
+                <div className='flex flex-col md:flex-row-reverse gap-4'>
+                    <Button type='submit'>{product ? "Save Changes" : "Add Feedback"}</Button>
+                    <Button type='button' variant='third'>Cancel</Button>
+                </div>
+                <div className='flex flex-col md:flex-row'>
+                    {product && (
+                        <DeleteProductBtn>Delete</DeleteProductBtn>
+                    )}
+                </div>
             </div>
         </form>
     </div>

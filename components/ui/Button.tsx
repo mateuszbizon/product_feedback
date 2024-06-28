@@ -4,7 +4,7 @@ import React from 'react'
 
 type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     children: React.ReactNode;
-    variant?: "primary" | "secondary" | "third" | "go-back";
+    variant?: "primary" | "secondary" | "third" | "go-back" | "delete";
 }
 
 const buttonVariants = cva(
@@ -15,7 +15,8 @@ const buttonVariants = cva(
                 primary: "bg-primary-1 hover:bg-primary-1-bright",
                 secondary: "bg-primary-2 hover:bg-primary-2-bright",
                 third: "bg-dark-2 hover:bg-dark-2-bright",
-                "go-back": "text-dark-3 hover:underline p-0"
+                "go-back": "text-dark-3 hover:underline p-0",
+                delete: "bg-error-1 hover:bg-error-1-bright",
             },
         } ,
         defaultVariants: {
