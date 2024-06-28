@@ -6,6 +6,7 @@ import { PRODUCT_SORT_LIST } from "@/constants";
 import SortProductsCard from "../cards/SortProductsCard";
 import AddFeedbackLink from "../buttons/AddFeedbackLink";
 import IconSuggestions from "../icons/IconSuggestions";
+import SelectDropdown from "../select-dropdown/SelectDropdown";
 
 function SortProducts() {
 	const [activeSortItem, setActiveSortItem] = useState<string>(
@@ -32,24 +33,9 @@ function SortProducts() {
 						</div>
 					</button>
 
-					<ul
-						className={`flex flex-col absolute top-12 left-0 bg-light-1 w-[250px] rounded-lg shadow-lg ${
-							sortModalOpen
-								? "opacity-100 pointer-events-auto"
-								: "opacity-0 pointer-events-none"
-						} transition-all duration-300`}>
-						{PRODUCT_SORT_LIST.map(item => {
-							return (
-								<SortProductsCard
-									key={item}
-									sortItem={item}
-									activeSortItem={activeSortItem}
-									setActiveSortItem={setActiveSortItem}
-									setSortModalOpen={setSortModalOpen}
-								/>
-							);
-						})}
-					</ul>
+					<div className="absolute top-0 left-0 w-[250px]">
+						<SelectDropdown dropdownList={PRODUCT_SORT_LIST} setDropdownOpen={setSortModalOpen} setActiveItem={setActiveSortItem} activeItem={activeSortItem} dropdownOpen={sortModalOpen} />
+					</div>
 				</div>
 			</div>
 

@@ -75,12 +75,16 @@
         @apply bg-primary-2 text-light-3 text-[13px] rounded-xl font-bold px-5 py-3 hover:bg-primary-2-bright transition duration-300
     }
 
+    .btn-4 {
+        @apply bg-dark-2 text-light-3 text-[13px] rounded-xl font-bold px-5 py-3 hover:bg-dark-2-bright transition duration-300
+    }
+
     .filter-box {
         @apply py-2 px-4 rounded-lg font-semibold text-[13px] bg-light-3 text-primary-2;
     }
 
     .input-1 {
-        @apply bg-light-2 w-full p-4 text-7 md:text-5 placeholder:text-7 md:placeholder:text-5 rounded-md outline-none focus:border focus:border-primary-2
+        @apply bg-light-2 w-full py-3 px-5 text-7 md:text-5 placeholder:text-7 md:placeholder:text-5 rounded-md outline-none focus:border focus:border-primary-2
     }
 
     .input-error-1 {
@@ -89,5 +93,13 @@
 
     .input-error-message {
         @apply text-error-1 text-6;
+    }
+
+    .label-1 {
+        @apply text-7 md:text-6 font-bold mb-2 text-dark-2;
+    }
+
+    .input-help-text-1 {
+        @apply text-7 md:text-6 mb-3 text-dark-3
     }
 }
