@@ -5,3 +5,11 @@ export type CreateUserType = {
     lastName: string;
     photo: string;
 }
+
+export type ProductModelType = {
+    _id: string;
+    title: string;
+    details: string;
+    category: string;
+    status: string;
+}
