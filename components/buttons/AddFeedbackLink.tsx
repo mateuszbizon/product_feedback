@@ -5,7 +5,7 @@ import IconPlus from '../icons/IconPlus'
 function AddFeedbackLink() {
   return (
     <Link
-        href='#'
+        href='/create-product'
         className='flex gap-1 items-center btn-2 whitespace-nowrap'>
         <IconPlus /> Add Feedback
     </Link>
