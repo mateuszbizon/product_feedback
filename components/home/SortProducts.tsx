@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import IconArrowDown from "../icons/IconArrowDown";
 import { PRODUCT_SORT_LIST } from "@/constants";
-import SortProductsCard from "../cards/SortProductsCard";
 import AddFeedbackLink from "../buttons/AddFeedbackLink";
 import IconSuggestions from "../icons/IconSuggestions";
 import SelectDropdown from "../select-dropdown/SelectDropdown";
