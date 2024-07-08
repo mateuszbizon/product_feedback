@@ -19,7 +19,7 @@ function RoadmapMobile() {
 
             <RoadmapStatusBtn productStatusActive={productStatusActive} setProductStatusActive={setProductStatusActive} productStatusName={ROADMAP_LIVE_TEXT} />
         </div>
-        <div>
+        <div className='px-5 md:px-0'>
             {productStatusActive === ROADMAP_PLANNED_TEXT && <RoadmapPlanned />}
             {productStatusActive === ROADMAP_IN_PROGRESS_TEXT && <RoadmapInProgress />}
             {productStatusActive === ROADMAP_LIVE_TEXT && <RoadmapLive />}
