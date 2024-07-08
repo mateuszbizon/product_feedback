@@ -1,5 +1,6 @@
 import AddFeedbackLink from '@/components/buttons/AddFeedbackLink'
 import GoBackBtn from '@/components/buttons/GoBackBtn'
+import RoadmapMobile from '@/components/roadmap/RoadmapMobile'
 import React from 'react'
 
 function RoadmapPage() {
@@ -15,7 +16,9 @@ function RoadmapPage() {
             </div>
         </div>
 
-        <div></div>
+        <div>
+          <RoadmapMobile />
+        </div>
     </div>
   )
 }
