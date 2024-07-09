@@ -14,8 +14,8 @@ function ProductRoadmapCard() {
         </div>
 
         <div className='flex flex-col gap-3'>
-            <p className='text-7 md:text-3 font-bold text-dark-2'>Add tags for solution</p>
-            <p className='text-7 md:text-4 font-normal text-dark-3'>Easier to search for solutions based on specific stack.</p>
+            <p className='text-7 xl:text-3 font-bold text-dark-2'>Add tags for solution</p>
+            <p className='text-7 xl:text-4 font-normal text-dark-3'>Easier to search for solutions based on specific stack.</p>
             <div className='filter-box w-fit'>Enhancement</div>
         </div>
 
