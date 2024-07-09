@@ -6,7 +6,7 @@ function RoadMap() {
     <div className='flex flex-col gap-5 bg-light-1 w-full rounded-lg p-6'>
         <div className='flex justify-between items-center'>
             <span className='text-3 font-bold text-dark-2'>Roadmap</span>
-            <Link href="#" className='text-primary-2 font-semibold text-7 underline hover:text-primary-5 transition duration-300'>View</Link>
+            <Link href="/roadmap" className='text-primary-2 font-semibold text-7 underline hover:text-primary-5 transition duration-300'>View</Link>
         </div>
 
         <div className='flex flex-col gap-2'>
