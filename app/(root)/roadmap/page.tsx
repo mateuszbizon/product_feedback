@@ -1,5 +1,6 @@
 import AddFeedbackLink from '@/components/buttons/AddFeedbackLink'
 import GoBackBtn from '@/components/buttons/GoBackBtn'
+import RoadmapDesktop from '@/components/roadmap/RoadmapDesktop'
 import RoadmapMobile from '@/components/roadmap/RoadmapMobile'
 import React from 'react'
 
@@ -17,7 +18,12 @@ function RoadmapPage() {
         </div>
 
         <div>
-          <RoadmapMobile />
+          <div className='md:hidden'>
+            <RoadmapMobile />
+          </div>
+          <div className='hidden md:block mt-7'>
+            <RoadmapDesktop />
+          </div>
         </div>
     </div>
   )
