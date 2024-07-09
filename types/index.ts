@@ -39,3 +39,12 @@ export type ReplyModelType = {
     content: string;
     replyingTo: string;
 }
+
+export type CreateProductResponseType = {
+    data: ProductModelType;
+    message: string;
+}
+
+export type ErrorResponseType = {
+    error: string;
+}
