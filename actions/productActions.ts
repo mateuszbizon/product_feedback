@@ -3,7 +3,7 @@
 import connectDB from "@/config/database"
 import ProductFeedback from "@/models/productFeedbackModel";
 import User from "@/models/userModel";
-import { CreateProductResponseType } from "@/types";
+import { CreateProductResponseType, GetAllProductsResponseType } from "@/types";
 import { ProductSchemaType } from "@/validations/productSchema";
 
 type CreateProductFeedbackProps = {
@@ -27,6 +27,21 @@ export async function createProductFeedback({ product, creatorId }: CreateProduc
         console.log(JSON.parse(JSON.stringify(newProduct)))
 
         return { data: JSON.parse(JSON.stringify(newProduct)), message: "product feedback created" }
+    } catch (error: any) {
+        console.log(error)
+        return { error: error.message }
+    }
+}
+
+export async function getAllProducts(): Promise<GetAllProductsResponseType> {
+    try {
+        await connectDB();
+
+        const products = await ProductFeedback.find({ category: "All" })
+
+        console.log(JSON.parse(JSON.stringify(products)))
+
+        return { data: JSON.parse(JSON.stringify(products)), message: "products retrieved" }
     } catch (error: any) {
         console.log(error)
         return { error: error.message }

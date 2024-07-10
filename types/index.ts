@@ -45,3 +45,9 @@ export type CreateProductResponseType = {
     message?: string;
     error?: string;
 }
+
+export type GetAllProductsResponseType = {
+    data?: ProductModelType[];
+    message?: string;
+    error?: string;
+}

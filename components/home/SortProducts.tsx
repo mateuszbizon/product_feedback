@@ -7,7 +7,11 @@ import AddFeedbackLink from "../buttons/AddFeedbackLink";
 import IconSuggestions from "../icons/IconSuggestions";
 import SelectDropdown from "../select-dropdown/SelectDropdown";
 
-function SortProducts() {
+type Props = {
+	productsLength: number;
+}
+
+function SortProducts({ productsLength }: Props) {
 	const [activeSortItem, setActiveSortItem] = useState<string>(
 		PRODUCT_SORT_LIST[0]
 	);
@@ -18,7 +22,7 @@ function SortProducts() {
 			<div className='flex gap-10'>
 				<div className="hidden md:flex items-center gap-3">
 					<IconSuggestions />
-					<span className="text-3 font-bold text-light-1">0 Suggestions</span>
+					<span className="text-3 font-bold text-light-1">{productsLength} Suggestions</span>
 				</div>
 
 				<div className="relative flex items-center">
