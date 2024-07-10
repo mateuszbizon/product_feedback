@@ -12,9 +12,14 @@ import Input from '../ui/Input'
 import Textarea from '../ui/Textarea'
 import InputErrorMessage from './InputErrorMessage'
 import Button from '../ui/Button'
-import { ProductModelType } from '@/types'
+import { CreateProductResponseType, ProductModelType } from '@/types'
 import IconEditFeedback from '../icons/IconEditFeedback'
 import DeleteProductBtn from '../buttons/DeleteProductBtn'
+import { useMutation } from '@tanstack/react-query'
+import { createProductFeedback } from '@/actions/productActions'
+import { useAuth } from '@clerk/nextjs'
+import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 type Props = {
     product?: ProductModelType;
@@ -34,6 +39,20 @@ function CreateProductForm({ product }: Props) {
             status: product ? product.status : PRODUCT_STATUS_LIST[0],
         }
     })
+    const router = useRouter();
+    const { userId } = useAuth();
+    const { mutate: handleCreateProductFeedback, isPending } = useMutation({
+        mutationFn: createProductFeedback,
+        onSuccess: (result: CreateProductResponseType) => {
+            if (result.data) {
+                toast.success(result.message)
+                router.push(`/product/${result.data._id}`)
+            }
+        },
+        onError: (result: CreateProductResponseType) => {
+            toast.error(result.error)
+        }
+    });
 
     function handleSetCategoryItem(item: string) {
         setCategoryItem(item)
@@ -47,6 +66,10 @@ function CreateProductForm({ product }: Props) {
 
     function onSubmit(data: ProductSchemaType) {
         console.log(data)
+        handleCreateProductFeedback({
+            product: data,
+            creatorId: userId!
+        })
     }
 
   return (
@@ -92,7 +115,7 @@ function CreateProductForm({ product }: Props) {
 
             <div className='flex flex-col gap-4 md:flex-row-reverse md:justify-between mt-3'>
                 <div className='flex flex-col md:flex-row-reverse gap-4'>
-                    <Button type='submit'>{product ? "Save Changes" : "Add Feedback"}</Button>
+                    <Button type='submit' disabled={isPending}>{isPending ? "Submitting..." : product ? "Save Changes" : "Add Feedback"}</Button>
                     <Button type='button' variant='third'>Cancel</Button>
                 </div>
                 <div className='flex flex-col md:flex-row'>
