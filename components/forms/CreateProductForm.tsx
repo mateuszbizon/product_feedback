@@ -19,6 +19,7 @@ import { useMutation } from '@tanstack/react-query'
 import { createProductFeedback } from '@/actions/productActions'
 import { useAuth } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 type Props = {
     product?: ProductModelType;
@@ -44,11 +45,12 @@ function CreateProductForm({ product }: Props) {
         mutationFn: createProductFeedback,
         onSuccess: (result: CreateProductResponseType) => {
             if (result.data) {
+                toast.success(result.message)
                 router.push(`/product/${result.data._id}`)
             }
         },
         onError: (result: CreateProductResponseType) => {
-            console.log(result.error)
+            toast.error(result.error)
         }
     });
 

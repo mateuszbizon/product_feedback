@@ -3,6 +3,8 @@ import { Jost } from "next/font/google";
 import "../globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import TanstackProvider from "@/components/TanstackProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const jost = Jost({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
@@ -21,6 +23,7 @@ export default function RootLayout({
       <ClerkProvider>
         <html lang="en">
           <body className={`${jost.className} bg-light-3`}>
+            <ToastContainer position="top-center" autoClose={3000} />
             {children}
           </body>
         </html>
