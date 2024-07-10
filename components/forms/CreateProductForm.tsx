@@ -29,7 +29,7 @@ function CreateProductForm({ product }: Props) {
     const [categoryItem, setCategoryItem] = useState(product ? product.category : PRODUCT_FILTERS_LIST[0])
     const [statusDropdownOpen, setStatusDropdownOpen] = useState(false)
     const [statusItem, setStatusItem] = useState(product ? product.status : PRODUCT_STATUS_LIST[0])
-    const { handleSubmit, register, formState: { errors, isSubmitting }, setValue } = useForm<ProductSchemaType>({
+    const { handleSubmit, register, formState: { errors }, setValue } = useForm<ProductSchemaType>({
         resolver: zodResolver(productSchema),
         defaultValues: {
             title: product ? product.title : "",
@@ -40,7 +40,7 @@ function CreateProductForm({ product }: Props) {
     })
     const router = useRouter();
     const { userId } = useAuth();
-    const { mutate: handleCreateProductFeedback } = useMutation({
+    const { mutate: handleCreateProductFeedback, isPending } = useMutation({
         mutationFn: createProductFeedback,
         onSuccess: (result: CreateProductResponseType) => {
             if (result.data) {
@@ -113,7 +113,7 @@ function CreateProductForm({ product }: Props) {
 
             <div className='flex flex-col gap-4 md:flex-row-reverse md:justify-between mt-3'>
                 <div className='flex flex-col md:flex-row-reverse gap-4'>
-                    <Button type='submit' disabled={isSubmitting}>{product ? "Save Changes" : "Add Feedback"}</Button>
+                    <Button type='submit' disabled={isPending}>{isPending ? "Submitting..." : product ? "Save Changes" : "Add Feedback"}</Button>
                     <Button type='button' variant='third'>Cancel</Button>
                 </div>
                 <div className='flex flex-col md:flex-row'>
