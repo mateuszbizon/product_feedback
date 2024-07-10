@@ -3,7 +3,7 @@
 import connectDB from "@/config/database"
 import ProductFeedback from "@/models/productFeedbackModel";
 import User from "@/models/userModel";
-import { CreateProductResponseType, ErrorResponseType } from "@/types";
+import { CreateProductResponseType } from "@/types";
 import { ProductSchemaType } from "@/validations/productSchema";
 
 type CreateProductFeedbackProps = {
@@ -11,7 +11,7 @@ type CreateProductFeedbackProps = {
     creatorId: string;
 }
 
-export async function createProductFeedback({ product, creatorId }: CreateProductFeedbackProps): Promise<CreateProductResponseType | ErrorResponseType> {
+export async function createProductFeedback({ product, creatorId }: CreateProductFeedbackProps): Promise<CreateProductResponseType> {
     try {
         await connectDB();
 
@@ -23,6 +23,8 @@ export async function createProductFeedback({ product, creatorId }: CreateProduc
             ...product,
             creator: productCreator._id,
         });
+
+        console.log(JSON.parse(JSON.stringify(newProduct)))
 
         return { data: JSON.parse(JSON.stringify(newProduct)), message: "product feedback created" }
     } catch (error: any) {

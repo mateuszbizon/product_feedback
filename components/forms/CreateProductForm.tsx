@@ -12,9 +12,13 @@ import Input from '../ui/Input'
 import Textarea from '../ui/Textarea'
 import InputErrorMessage from './InputErrorMessage'
 import Button from '../ui/Button'
-import { ProductModelType } from '@/types'
+import { CreateProductResponseType, ProductModelType } from '@/types'
 import IconEditFeedback from '../icons/IconEditFeedback'
 import DeleteProductBtn from '../buttons/DeleteProductBtn'
+import { useMutation } from '@tanstack/react-query'
+import { createProductFeedback } from '@/actions/productActions'
+import { useAuth } from '@clerk/nextjs'
+import { useRouter } from 'next/navigation'
 
 type Props = {
     product?: ProductModelType;
@@ -25,7 +29,7 @@ function CreateProductForm({ product }: Props) {
     const [categoryItem, setCategoryItem] = useState(product ? product.category : PRODUCT_FILTERS_LIST[0])
     const [statusDropdownOpen, setStatusDropdownOpen] = useState(false)
     const [statusItem, setStatusItem] = useState(product ? product.status : PRODUCT_STATUS_LIST[0])
-    const { handleSubmit, register, formState: { errors }, setValue } = useForm<ProductSchemaType>({
+    const { handleSubmit, register, formState: { errors, isSubmitting }, setValue } = useForm<ProductSchemaType>({
         resolver: zodResolver(productSchema),
         defaultValues: {
             title: product ? product.title : "",
@@ -34,6 +38,19 @@ function CreateProductForm({ product }: Props) {
             status: product ? product.status : PRODUCT_STATUS_LIST[0],
         }
     })
+    const router = useRouter();
+    const { userId } = useAuth();
+    const { mutate: handleCreateProductFeedback } = useMutation({
+        mutationFn: createProductFeedback,
+        onSuccess: (result: CreateProductResponseType) => {
+            if (result.data) {
+                router.push(`/product/${result.data._id}`)
+            }
+        },
+        onError: (result: CreateProductResponseType) => {
+            console.log(result.error)
+        }
+    });
 
     function handleSetCategoryItem(item: string) {
         setCategoryItem(item)
@@ -47,6 +64,10 @@ function CreateProductForm({ product }: Props) {
 
     function onSubmit(data: ProductSchemaType) {
         console.log(data)
+        handleCreateProductFeedback({
+            product: data,
+            creatorId: userId!
+        })
     }
 
   return (
@@ -92,7 +113,7 @@ function CreateProductForm({ product }: Props) {
 
             <div className='flex flex-col gap-4 md:flex-row-reverse md:justify-between mt-3'>
                 <div className='flex flex-col md:flex-row-reverse gap-4'>
-                    <Button type='submit'>{product ? "Save Changes" : "Add Feedback"}</Button>
+                    <Button type='submit' disabled={isSubmitting}>{product ? "Save Changes" : "Add Feedback"}</Button>
                     <Button type='button' variant='third'>Cancel</Button>
                 </div>
                 <div className='flex flex-col md:flex-row'>

@@ -41,10 +41,7 @@ export type ReplyModelType = {
 }
 
 export type CreateProductResponseType = {
-    data: ProductModelType;
-    message: string;
-}
-
-export type ErrorResponseType = {
-    error: string;
+    data?: ProductModelType;
+    message?: string;
+    error?: string;
 }
