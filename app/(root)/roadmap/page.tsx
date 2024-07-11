@@ -1,18 +1,14 @@
 "use client"
 
-import { getRoadmapProducts } from '@/actions/productActions'
 import AddFeedbackLink from '@/components/buttons/AddFeedbackLink'
 import GoBackBtn from '@/components/buttons/GoBackBtn'
 import RoadmapDesktop from '@/components/roadmap/RoadmapDesktop'
 import RoadmapMobile from '@/components/roadmap/RoadmapMobile'
-import { useQuery } from '@tanstack/react-query'
+import useGetRoadmapProducts from '@/hooks/useGetRoadmapProducts'
 import React from 'react'
 
 function RoadmapPage() {
-  const { data: products, isLoading } = useQuery({
-    queryKey: ["roadmap-products"],
-    queryFn: () => getRoadmapProducts()
-  })
+  const { products, isLoading } = useGetRoadmapProducts()
 
   return (
     <div className='container-1 md:padding-top md:padding-bottom'>
