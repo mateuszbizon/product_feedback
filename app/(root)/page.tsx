@@ -5,6 +5,7 @@ import ErrorMessage from "@/components/errors/ErrorMessage";
 import HomeHeaderDesktop from "@/components/home/HomeHeaderDesktop";
 import HomeHeaderMobile from "@/components/home/HomeHeaderMobile";
 import SortProducts from "@/components/home/SortProducts";
+import CircleLoading from "@/components/loadings/CircleLoading";
 import Products from "@/components/products/Products";
 import { useProductFilters } from "@/context/ProductFiltersContext";
 import { useQuery } from "@tanstack/react-query";
@@ -34,7 +35,7 @@ export default function Home() {
         )}
         
         {isLoading && (
-          <div>Fetching products...</div>
+          <CircleLoading />
         )}
         
         {products?.data && (

@@ -3,6 +3,7 @@
 import AddFeedbackLink from '@/components/buttons/AddFeedbackLink'
 import GoBackBtn from '@/components/buttons/GoBackBtn'
 import ErrorMessage from '@/components/errors/ErrorMessage'
+import CircleLoading from '@/components/loadings/CircleLoading'
 import RoadmapDesktop from '@/components/roadmap/RoadmapDesktop'
 import RoadmapMobile from '@/components/roadmap/RoadmapMobile'
 import useGetRoadmapProducts from '@/hooks/useGetRoadmapProducts'
@@ -29,7 +30,7 @@ function RoadmapPage() {
           )}
 
           {isLoading && (
-            <div>Fetching products...</div>
+            <CircleLoading />
           )}
 
           {products?.data && (
