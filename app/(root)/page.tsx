@@ -1,6 +1,7 @@
 "use client"
 
 import { getAllProducts } from "@/actions/productActions";
+import ErrorMessage from "@/components/errors/ErrorMessage";
 import HomeHeaderDesktop from "@/components/home/HomeHeaderDesktop";
 import HomeHeaderMobile from "@/components/home/HomeHeaderMobile";
 import SortProducts from "@/components/home/SortProducts";
@@ -24,12 +25,14 @@ export default function Home() {
         <HomeHeaderDesktop />
       </div>
 
-      {isError && (
-        <div>{products?.error}</div>
-      )}
       
       <div className="xl:w-4/5">
         <SortProducts productsLength={products?.data?.length} />
+
+        {isError && (
+          <ErrorMessage message={products?.error!} />
+        )}
+        
         {isLoading && (
           <div>Fetching products...</div>
         )}

@@ -2,13 +2,14 @@
 
 import AddFeedbackLink from '@/components/buttons/AddFeedbackLink'
 import GoBackBtn from '@/components/buttons/GoBackBtn'
+import ErrorMessage from '@/components/errors/ErrorMessage'
 import RoadmapDesktop from '@/components/roadmap/RoadmapDesktop'
 import RoadmapMobile from '@/components/roadmap/RoadmapMobile'
 import useGetRoadmapProducts from '@/hooks/useGetRoadmapProducts'
 import React from 'react'
 
 function RoadmapPage() {
-  const { products, isLoading } = useGetRoadmapProducts()
+  const { products, isLoading, isError } = useGetRoadmapProducts()
 
   return (
     <div className='container-1 md:padding-top md:padding-bottom'>
@@ -23,6 +24,10 @@ function RoadmapPage() {
         </div>
 
         <div>
+          {isError && (
+            <ErrorMessage message={products?.error!} />
+          )}
+
           {isLoading && (
             <div>Fetching products...</div>
           )}

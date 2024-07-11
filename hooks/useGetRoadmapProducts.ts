@@ -4,7 +4,7 @@ import { getRoadmapProducts } from '@/actions/productActions'
 import { useQuery } from '@tanstack/react-query'
 
 function useGetRoadmapProducts() {
-    const { data: products, isLoading } = useQuery({
+    const { data: products, isLoading, isError } = useQuery({
         queryKey: ["roadmap-products"],
         queryFn: () => getRoadmapProducts()
       })
@@ -12,6 +12,7 @@ function useGetRoadmapProducts() {
   return {
     products,
     isLoading,
+    isError,
   }
 }
 
