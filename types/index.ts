@@ -51,3 +51,15 @@ export type GetAllProductsResponseType = {
     message?: string;
     error?: string;
 }
+
+export type RoadmapProductsType = {
+    plannedProducts: ProductModelType[];
+    liveProducts: ProductModelType[];
+    inProgressProducts: ProductModelType[];
+}
+
+export type GetRoadmapProductsResponseType = {
+    data?: RoadmapProductsType;
+    message?: string;
+    error?: string;
+}
