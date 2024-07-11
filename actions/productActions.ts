@@ -1,6 +1,7 @@
 "use server"
 
 import connectDB from "@/config/database"
+import { PRODUCT_FILTERS_LIST } from "@/constants";
 import ProductFeedback from "@/models/productFeedbackModel";
 import User from "@/models/userModel";
 import { CreateProductResponseType, GetAllProductsResponseType } from "@/types";
@@ -33,11 +34,21 @@ export async function createProductFeedback({ product, creatorId }: CreateProduc
     }
 }
 
-export async function getAllProducts(): Promise<GetAllProductsResponseType> {
+type GetAllProductsProps = {
+    category: string
+}
+
+export async function getAllProducts({ category }: GetAllProductsProps): Promise<GetAllProductsResponseType> {
     try {
+        let productCategory = category;
+
         await connectDB();
 
-        const products = await ProductFeedback.find({ category: "All" })
+        if (!PRODUCT_FILTERS_LIST.includes(category)) {
+            productCategory = PRODUCT_FILTERS_LIST[0];
+        }
+
+        const products = await ProductFeedback.find({ category: productCategory })
 
         console.log(JSON.parse(JSON.stringify(products)))
 
