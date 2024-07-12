@@ -96,24 +96,30 @@ export async function getSingleProduct({ productId }: GetSingleProductProps): Pr
 
         if (!mongoose.Types.ObjectId.isValid(productId)) return { error: "Product not found" }
 
-        const product = await ProductFeedback.findById(productId).populate({
-            path: "comments",
-            model: Comment,
-            populate: [
-                {
-                    path: "replies",
-                    model: Reply,
-                    populate: {
+        const product = await ProductFeedback.findById(productId).populate([
+            {
+                path: "comments",
+                model: Comment,
+                populate: [
+                    {
+                        path: "replies",
+                        model: Reply,
+                        populate: {
+                            path: "user",
+                            model: User,
+                        }
+                    },
+                    {
                         path: "user",
                         model: User,
                     }
-                },
-                {
-                    path: "user",
-                    model: User,
-                }
-            ],
-        })
+                ],
+            },
+            {
+                path: "creator",
+                model: User,
+            }
+        ])
 
         if (!product) return { error: "Product not found" }
 
