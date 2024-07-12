@@ -4,8 +4,13 @@ import React, { useState } from 'react'
 import ReplyBtn from '../buttons/ReplyBtn'
 import Image from 'next/image'
 import AddReplyForm from '../forms/AddReplyForm'
+import { ReplyModelType } from '@/types'
 
-function ReplyCard() {
+type Props = {
+    reply: ReplyModelType;
+}
+
+function ReplyCard({ reply }: Props) {
     const [replyFormOpen, setReplyFormOpen] = useState(false)
 
   return (
@@ -16,8 +21,8 @@ function ReplyCard() {
                     <Image src="/comment-img.jpg" width={200} height={200} alt='user profile image' className='w-full h-full object-cover rounded-full' />
                 </div>
                 <div className='flex flex-col'>
-                    <span className='text-7 font-bold text-dark-2'>Anne Valentine</span>
-                    <span className='text-7 text-dark-3'>@anev1990</span>
+                    <span className='text-7 font-bold text-dark-2'>{reply.user.firstName} {reply.user.lastName}</span>
+                    <span className='text-7 text-dark-3'>{reply.user.username}</span>
                 </div>
             </div>
 
@@ -25,7 +30,7 @@ function ReplyCard() {
         </div>
 
         <p className='text-7 md:text-5 text-dark-3'>
-            <span className='text-primary-1 font-bold'>@hummingbird1</span> Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my device’s dark mode turns on without the bright background it currently has.
+            <span className='text-primary-1 font-bold'>@{reply.replyingTo}</span> {reply.content}
         </p>
 
         <div className={`${replyFormOpen ? "max-h-[1000px]" : "max-h-0"} overflow-hidden w-full transition-all duration-400`}>

@@ -63,3 +63,9 @@ export type GetRoadmapProductsResponseType = {
     message?: string;
     error?: string;
 }
+
+export type GetSingleProductResponseType = {
+    data?: ProductModelType;
+    message?: string;
+    error?: string;
+}
