@@ -18,7 +18,7 @@ function ReplyCard({ reply }: Props) {
         <div className='flex justify-between items-center'>
             <div className='flex items-center gap-5'>
                 <div className='size-10'>
-                    <Image src="/comment-img.jpg" width={200} height={200} alt='user profile image' className='w-full h-full object-cover rounded-full' />
+                    <Image src={reply.user.photo} width={200} height={200} alt='user profile image' className='w-full h-full object-cover rounded-full' />
                 </div>
                 <div className='flex flex-col'>
                     <span className='text-7 font-bold text-dark-2'>{reply.user.firstName} {reply.user.lastName}</span>
