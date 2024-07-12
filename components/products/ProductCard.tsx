@@ -2,21 +2,23 @@ import React from 'react'
 import UpVoteBtn from '../buttons/UpVoteBtn'
 import IconComments from '../icons/IconComments'
 import { ProductModelType } from '@/types'
+import Link from 'next/link'
 
 type Props = {
   product: ProductModelType;
+  isProductPage?: boolean;
 }
 
-function ProductCard({ product }: Props) {
+function ProductCard({ product, isProductPage }: Props) {
   return (
-    <div className='container-4 flex flex-col md:flex-row md:justify-between gap-3'>
+    <Link href={`/product/${product._id}`} className={`group container-4 flex flex-col md:flex-row md:justify-between gap-3 ${isProductPage && "cursor-default"}`}>
         <div className='flex flex-col md:flex-row gap-8'>
           <div className='hidden md:block'>
             <UpVoteBtn />
           </div>
 
           <div className='flex flex-col gap-3'>
-            <p className='text-7 md:text-3 font-bold text-dark-2'>{product.title}</p>
+            <p className={`text-7 md:text-3 font-bold text-dark-2 ${!isProductPage && " group-hover:text-primary-2 transition"}`}>{product.title}</p>
             <p className='text-7 md:text-4 font-normal text-dark-3'>{product.details}</p>
             <div className='filter-box w-fit'>{product.category}</div>
           </div>
@@ -31,7 +33,7 @@ function ProductCard({ product }: Props) {
               <span className='text-7 md:text-4 font-bold text-dark-2'>{product.comments.length}</span>
           </div>
         </div>
-    </div>
+    </Link>
   )
 }
 
