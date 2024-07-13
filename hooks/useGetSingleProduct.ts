@@ -7,7 +7,7 @@ type Props = {
 
 function useGetSingleProduct({ productId }: Props) {
     const { data: product, isLoading, isError } = useQuery({
-        queryKey: ["product"],
+        queryKey: ["product", productId],
         queryFn: () => getSingleProduct({
             productId: productId,
         })

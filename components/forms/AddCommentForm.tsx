@@ -8,7 +8,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import InputErrorMessage from './InputErrorMessage';
 import Button from '../ui/Button';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createComment } from '@/actions/commentActions';
 import { useAuth } from '@clerk/nextjs';
 import { CreateCommentResponseType, ProductModelType } from '@/types';
@@ -28,6 +28,7 @@ function AddCommentForm({ product }: Props) {
   const { charactersLeft, handleSetCharactersLeft } = useCharactersLeft(COMMENT_MAX_LENGTH);
 
   const { userId } = useAuth();
+  const queryClient = useQueryClient();
   const { mutate: handleCreateComment, isPending } = useMutation({
     mutationFn: createComment,
     onSuccess: (result: CreateCommentResponseType) => {
@@ -35,6 +36,7 @@ function AddCommentForm({ product }: Props) {
         toast.success(result.message)
         reset()
         handleSetCharactersLeft("")
+        queryClient.invalidateQueries({ queryKey: ['product', product._id] });
       } else {
         toast.error(result.error)
       }
