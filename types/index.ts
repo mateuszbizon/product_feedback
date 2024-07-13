@@ -69,3 +69,9 @@ export type GetSingleProductResponseType = {
     message?: string;
     error?: string;
 }
+
+export type EditProductFeedbackResponseType = {
+    data?: ProductModelType;
+    message?: string;
+    error?: string;
+}

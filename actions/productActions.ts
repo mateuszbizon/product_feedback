@@ -6,9 +6,9 @@ import Comment from "@/models/commentModel";
 import ProductFeedback from "@/models/productFeedbackModel";
 import Reply from "@/models/replyModel";
 import User from "@/models/userModel";
-import { CreateProductResponseType, GetAllProductsResponseType, GetRoadmapProductsResponseType, GetSingleProductResponseType } from "@/types";
+import { CreateProductResponseType, EditProductFeedbackResponseType, GetAllProductsResponseType, GetRoadmapProductsResponseType, GetSingleProductResponseType } from "@/types";
 import { ProductSchemaType } from "@/validations/productSchema";
-import mongoose, { model } from "mongoose";
+import mongoose from "mongoose";
 
 type CreateProductFeedbackProps = {
     product: ProductSchemaType;
@@ -96,30 +96,63 @@ export async function getSingleProduct({ productId }: GetSingleProductProps): Pr
 
         if (!mongoose.Types.ObjectId.isValid(productId)) return { error: "Product not found" }
 
-        const product = await ProductFeedback.findById(productId).populate({
-            path: "comments",
-            model: Comment,
-            populate: [
-                {
-                    path: "replies",
-                    model: Reply,
-                    populate: {
+        const product = await ProductFeedback.findById(productId).populate([
+            {
+                path: "comments",
+                model: Comment,
+                populate: [
+                    {
+                        path: "replies",
+                        model: Reply,
+                        populate: {
+                            path: "user",
+                            model: User,
+                        }
+                    },
+                    {
                         path: "user",
                         model: User,
                     }
-                },
-                {
-                    path: "user",
-                    model: User,
-                }
-            ],
-        })
+                ],
+            },
+            {
+                path: "creator",
+                model: User,
+            }
+        ])
 
         if (!product) return { error: "Product not found" }
 
         console.log(JSON.parse(JSON.stringify(product)))
 
         return { data: JSON.parse(JSON.stringify(product)), message: "product retrieved" }
+    } catch (error: any) {
+        console.log(error)
+        return { error: error.message }
+    }
+}
+
+type EditProductFeedbackProps = {
+    productId: string;
+    product: ProductSchemaType;
+    creatorId: string;
+}
+
+export async function editProductFeedback({ productId, product, creatorId }: EditProductFeedbackProps): Promise<EditProductFeedbackResponseType> {
+    try {
+        await connectDB();
+
+        if (!mongoose.Types.ObjectId.isValid(productId)) return { error: "Product not found" }
+
+        const existingProduct = await ProductFeedback.findById(productId);
+
+        if (existingProduct.creator.toString() !== creatorId) return { error: "Not author" }
+
+        const editedProduct = await ProductFeedback.findByIdAndUpdate(productId, { ...product }, { new: true })
+
+        console.log(JSON.parse(JSON.stringify(editedProduct)))
+
+        return { data: JSON.parse(JSON.stringify(editedProduct)), message: "Product feedback edited" }
     } catch (error: any) {
         console.log(error)
         return { error: error.message }
