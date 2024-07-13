@@ -75,3 +75,9 @@ export type EditProductFeedbackResponseType = {
     message?: string;
     error?: string;
 }
+
+export type CreateCommentResponseType = {
+    data?: CommentModelType;
+    message?: string;
+    error?: string;
+}

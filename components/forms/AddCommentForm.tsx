@@ -7,10 +7,18 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import InputErrorMessage from './InputErrorMessage';
-import Textarea from '../ui/Textarea';
 import Button from '../ui/Button';
+import { useMutation } from '@tanstack/react-query';
+import { createComment } from '@/actions/commentActions';
+import { useAuth } from '@clerk/nextjs';
+import { CreateCommentResponseType, ProductModelType } from '@/types';
+import { toast } from 'react-toastify';
 
-function AddCommentForm() {
+type Props = {
+  product: ProductModelType;
+}
+
+function AddCommentForm({ product }: Props) {
   const { register, handleSubmit, formState: { errors }, reset } = useForm<CommentSchemaType>({
     resolver: zodResolver(commentSchema),
     defaultValues: {
@@ -18,6 +26,23 @@ function AddCommentForm() {
     }
   })
   const { charactersLeft, handleSetCharactersLeft } = useCharactersLeft(COMMENT_MAX_LENGTH);
+
+  const { userId } = useAuth();
+  const { mutate: handleCreateComment, isPending } = useMutation({
+    mutationFn: createComment,
+    onSuccess: (result: CreateCommentResponseType) => {
+      if (result.data) {
+        toast.success(result.message)
+        reset()
+        handleSetCharactersLeft("")
+      } else {
+        toast.error(result.error)
+      }
+    },
+    onError: (result: CreateCommentResponseType) => {
+      toast.error(result.error)
+    }
+  })
   
   function handleChangeTextarea(e: React.ChangeEvent<HTMLTextAreaElement>) {
     handleSetCharactersLeft(e.target.value)
@@ -25,8 +50,12 @@ function AddCommentForm() {
 
   function onSubmit(data: CommentSchemaType) {
     console.log(data)
-    reset()
-    handleSetCharactersLeft("")
+
+    handleCreateComment({
+      comment: data,
+      creatorId: userId!,
+      productId: product._id,
+    })
   }
 
   return (
@@ -42,7 +71,7 @@ function AddCommentForm() {
             </div>
             <div className='flex justify-between items-center'>
                 <span className='text-5 text-dark-3'>{charactersLeft} characters left</span>
-                <Button type='submit' className='whitespace-nowrap'>Post Comment</Button>
+                <Button type='submit' className='whitespace-nowrap' disabled={isPending}>{isPending ? "Adding..." : "Post Comment"}</Button>
             </div>
         </form>
     </div>
