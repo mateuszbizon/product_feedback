@@ -89,7 +89,7 @@ function CreateProductForm({ product }: Props) {
 
         handleEditProductFeedback({
             product: data,
-            creatorId: product.creator._id,
+            creatorId: userId!,
             productId: product._id,
         })
     }
@@ -142,7 +142,7 @@ function CreateProductForm({ product }: Props) {
                 </div>
                 <div className='flex flex-col md:flex-row'>
                     {product && (
-                        <DeleteProductBtn>Delete</DeleteProductBtn>
+                        <DeleteProductBtn productId={product._id}>Delete</DeleteProductBtn>
                     )}
                 </div>
             </div>

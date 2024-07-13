@@ -6,7 +6,7 @@ import Comment from "@/models/commentModel";
 import ProductFeedback from "@/models/productFeedbackModel";
 import Reply from "@/models/replyModel";
 import User from "@/models/userModel";
-import { CreateProductResponseType, EditProductFeedbackResponseType, GetAllProductsResponseType, GetRoadmapProductsResponseType, GetSingleProductResponseType } from "@/types";
+import { CreateProductResponseType, DeleteProductResponseType, EditProductFeedbackResponseType, GetAllProductsResponseType, GetRoadmapProductsResponseType, GetSingleProductResponseType } from "@/types";
 import { ProductSchemaType } from "@/validations/productSchema";
 import mongoose from "mongoose";
 
@@ -142,17 +142,51 @@ export async function editProductFeedback({ productId, product, creatorId }: Edi
     try {
         await connectDB();
 
+        const productCreator = await User.findOne({ clerkId: creatorId })
+
+        if (!productCreator) return { error: "User not found" }
+
         if (!mongoose.Types.ObjectId.isValid(productId)) return { error: "Product not found" }
 
         const existingProduct = await ProductFeedback.findById(productId);
 
-        if (existingProduct.creator.toString() !== creatorId) return { error: "Not author" }
+        if (existingProduct.creator.toString() !== productCreator._id.toString()) return { error: "Not author" }
 
         const editedProduct = await ProductFeedback.findByIdAndUpdate(productId, { ...product }, { new: true })
 
         console.log(JSON.parse(JSON.stringify(editedProduct)))
 
         return { data: JSON.parse(JSON.stringify(editedProduct)), message: "Product feedback edited" }
+    } catch (error: any) {
+        console.log(error)
+        return { error: error.message }
+    }
+}
+
+type DeleteProductProps = {
+    productId: string;
+    creatorId: string;
+}
+
+export async function deleteProduct({ productId, creatorId }: DeleteProductProps): Promise<DeleteProductResponseType> {
+    try {
+        await connectDB();
+
+        const productCreator = await User.findOne({ clerkId: creatorId })
+
+        if (!productCreator) return { error: "User not found" }
+
+        if (!mongoose.Types.ObjectId.isValid(productId)) return { error: "Product not found" }
+
+        const existingProduct = await ProductFeedback.findById(productId);
+
+        if (existingProduct.creator.toString() !== productCreator._id.toString()) return { error: "Not author" }
+
+        const deletedProduct = await ProductFeedback.findByIdAndDelete(productId)
+
+        console.log(JSON.parse(JSON.stringify(deletedProduct)))
+
+        return { data: JSON.parse(JSON.stringify(deletedProduct)), message: "Product deleted" }
     } catch (error: any) {
         console.log(error)
         return { error: error.message }
