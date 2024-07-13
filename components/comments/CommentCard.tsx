@@ -38,18 +38,20 @@ function CommentCard({ comment }: Props) {
             <AddReplyForm setReplyFormOpen={setReplyFormOpen} />
         </div>
 
-        <div className='flex gap-5'>
-            <div className='flex'>
-                <div className='w-[2px] h-full bg-light-3'></div>
+        {comment.replies.length > 0 && (
+            <div className='flex gap-5'>
+                <div className='flex'>
+                    <div className='w-[2px] h-full bg-light-3'></div>
+                </div>
+                <div className='space-y-5 w-full'>
+                    {comment.replies.map((reply) => {
+                        return (
+                            <ReplyCard key={reply._id} reply={reply} />
+                        )
+                    })}
+                </div>
             </div>
-            <div className='space-y-5 w-full'>
-                {comment.replies.map((reply) => {
-                    return (
-                        <ReplyCard key={reply._id} reply={reply} />
-                    )
-                })}
-            </div>
-        </div>
+        )}
     </div>
   )
 }

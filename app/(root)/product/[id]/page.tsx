@@ -49,7 +49,7 @@ function ProductPage({ params }: Props) {
         <div className='container-3 max-w-[730px]'>
           {product?.data && (
             <div className='container-4'>
-              <AddCommentForm />
+              <AddCommentForm product={product.data} />
             </div>
           )}
         </div>
