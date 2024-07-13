@@ -9,9 +9,10 @@ import { CommentModelType } from '@/types'
 
 type Props = {
     comment: CommentModelType;
+    productId: string;
 }
 
-function CommentCard({ comment }: Props) {
+function CommentCard({ comment, productId }: Props) {
     const [replyFormOpen, setReplyFormOpen] = useState(false)
 
   return (
@@ -35,7 +36,7 @@ function CommentCard({ comment }: Props) {
         </p>
 
         <div className={`${replyFormOpen ? "max-h-[1000px]" : "max-h-0"} overflow-hidden w-full transition-all duration-400`}>
-            <AddReplyForm setReplyFormOpen={setReplyFormOpen} />
+            <AddReplyForm setReplyFormOpen={setReplyFormOpen} comment={comment} productId={productId} />
         </div>
 
         {comment.replies.length > 0 && (
@@ -46,7 +47,7 @@ function CommentCard({ comment }: Props) {
                 <div className='space-y-5 w-full'>
                     {comment.replies.map((reply) => {
                         return (
-                            <ReplyCard key={reply._id} reply={reply} />
+                            <ReplyCard key={reply._id} reply={reply} comment={comment} productId={productId} />
                         )
                     })}
                 </div>

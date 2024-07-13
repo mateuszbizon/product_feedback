@@ -4,13 +4,15 @@ import React, { useState } from 'react'
 import ReplyBtn from '../buttons/ReplyBtn'
 import Image from 'next/image'
 import AddReplyForm from '../forms/AddReplyForm'
-import { ReplyModelType } from '@/types'
+import { CommentModelType, ReplyModelType } from '@/types'
 
 type Props = {
     reply: ReplyModelType;
+    comment: CommentModelType;
+    productId: string;
 }
 
-function ReplyCard({ reply }: Props) {
+function ReplyCard({ reply, comment, productId }: Props) {
     const [replyFormOpen, setReplyFormOpen] = useState(false)
 
   return (
@@ -34,7 +36,7 @@ function ReplyCard({ reply }: Props) {
         </p>
 
         <div className={`${replyFormOpen ? "max-h-[1000px]" : "max-h-0"} overflow-hidden w-full transition-all duration-400`}>
-            <AddReplyForm setReplyFormOpen={setReplyFormOpen} />
+            <AddReplyForm setReplyFormOpen={setReplyFormOpen} reply={reply} comment={comment} productId={productId} />
         </div>
     </div>
   )
