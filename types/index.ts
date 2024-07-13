@@ -87,3 +87,9 @@ export type CreateReplyResponseType = {
     message?: string;
     error?: string;
 }
+
+export type DeleteProductResponseType = {
+    data?: ProductModelType;
+    message?: string;
+    error?: string;
+}
