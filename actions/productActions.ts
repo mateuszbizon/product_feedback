@@ -51,7 +51,7 @@ export async function getAllProducts({ category }: GetAllProductsProps): Promise
             productCategory = PRODUCT_FILTERS_LIST[0];
         }
 
-        const products = await ProductFeedback.find({ category: productCategory })
+        const products = await ProductFeedback.find({ category: productCategory, status: "Suggestion" })
 
         console.log(JSON.parse(JSON.stringify(products)))
 

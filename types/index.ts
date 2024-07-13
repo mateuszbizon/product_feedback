@@ -81,3 +81,9 @@ export type CreateCommentResponseType = {
     message?: string;
     error?: string;
 }
+
+export type CreateReplyResponseType = {
+    data?: ReplyModelType;
+    message?: string;
+    error?: string;
+}

@@ -16,7 +16,7 @@ function Product({ product }: Props) {
             <div className='space-y-5 divide-y'>
                 {product.comments.map((comment) => {
                   return (
-                    <CommentCard key={comment._id} comment={comment} />
+                    <CommentCard key={comment._id} comment={comment} productId={product._id} />
                   )
                 })}
             </div>
