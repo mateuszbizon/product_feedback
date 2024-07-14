@@ -6,7 +6,7 @@ import Comment from "@/models/commentModel";
 import ProductFeedback from "@/models/productFeedbackModel";
 import Reply from "@/models/replyModel";
 import User from "@/models/userModel";
-import { CreateProductResponseType, DeleteProductResponseType, EditProductFeedbackResponseType, GetAllProductsResponseType, GetRoadmapProductsResponseType, GetSingleProductResponseType } from "@/types";
+import { CreateProductResponseType, DeleteProductResponseType, EditProductFeedbackResponseType, GetAllProductsResponseType, GetRoadmapProductsResponseType, GetSingleProductResponseType, UpVoteProductResponseType } from "@/types";
 import { ProductSchemaType } from "@/validations/productSchema";
 import mongoose from "mongoose";
 
@@ -187,6 +187,40 @@ export async function deleteProduct({ productId, creatorId }: DeleteProductProps
         console.log(JSON.parse(JSON.stringify(deletedProduct)))
 
         return { data: JSON.parse(JSON.stringify(deletedProduct)), message: "Product deleted" }
+    } catch (error: any) {
+        console.log(error)
+        return { error: error.message }
+    }
+}
+
+type UpVoteProductProps = {
+    userId: string;
+    productId: string;
+}
+
+export async function upVoteProduct({ userId, productId }: UpVoteProductProps): Promise<UpVoteProductResponseType> {
+    try {
+        await connectDB();
+
+        const productCreator = await User.findOne({ clerkId: userId })
+
+        if (!productCreator) return { error: "User not found" }
+
+        if (!mongoose.Types.ObjectId.isValid(productId)) return { error: "Product not found" }
+
+        const existingProduct = await ProductFeedback.findById(productId);
+
+        if (existingProduct.upVotes.includes(userId)) {
+            existingProduct.upVotes = existingProduct.upVotes.filter((vote: string) => vote !== userId)
+        } else {
+            existingProduct.upVotes.push(userId)
+        }
+
+        const editedProduct = await ProductFeedback.findByIdAndUpdate(productId, existingProduct, { new: true })
+
+        console.log(JSON.parse(JSON.stringify(editedProduct)));
+
+        return { data: JSON.parse(JSON.stringify(editedProduct)), message: "Up vote added/deleted" }
     } catch (error: any) {
         console.log(error)
         return { error: error.message }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import IconComments from '../icons/IconComments'
 import UpVoteBtn from '../buttons/UpVoteBtn'
 import { getProductStatusColor } from '@/utils/getProductStatusColor'
@@ -26,7 +26,7 @@ function ProductRoadmapCard({ product }: Props) {
 
         <div className='flex justify-between items-center'>
           <div>
-            <UpVoteBtn isRoadmap={true} />
+            <UpVoteBtn upVotesProp={product.upVotes} isRoadmap={true} productId={product._id} />
           </div>
           <div className='flex gap-2 items-center'>
               <IconComments />
