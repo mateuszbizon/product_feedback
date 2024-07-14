@@ -26,7 +26,7 @@ function ProductRoadmapCard({ product }: Props) {
 
         <div className='flex justify-between items-center'>
           <div>
-            <UpVoteBtn upVotesProp={product.upVotes} isRoadmap={true} />
+            <UpVoteBtn upVotesProp={product.upVotes} isRoadmap={true} productId={product._id} />
           </div>
           <div className='flex gap-2 items-center'>
               <IconComments />

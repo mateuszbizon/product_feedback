@@ -18,7 +18,7 @@ function ProductCard({ product, isProductPage }: Props) {
     <Link href={`/product/${product._id}`} className={`group container-4 flex flex-col md:flex-row md:justify-between gap-3 ${isProductPage && "cursor-default"}`}>
         <div className='flex flex-col md:flex-row gap-8'>
           <div className='hidden md:block'>
-            <UpVoteBtn upVotesProp={upVotes} setUpVotesProp={setUpVotes} />
+            <UpVoteBtn upVotesProp={upVotes} setUpVotesProp={setUpVotes} productId={product._id} />
           </div>
 
           <div className='flex flex-col gap-3'>
@@ -30,7 +30,7 @@ function ProductCard({ product, isProductPage }: Props) {
 
         <div className='flex justify-between items-center'>
           <div className='md:hidden'>
-            <UpVoteBtn upVotesProp={upVotes} setUpVotesProp={setUpVotes} />
+            <UpVoteBtn upVotesProp={upVotes} setUpVotesProp={setUpVotes} productId={product._id} />
           </div>
           <div className='flex gap-2 items-center'>
               <IconComments />

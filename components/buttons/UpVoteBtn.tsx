@@ -3,16 +3,23 @@
 import React, { useState, useEffect } from 'react'
 import IconArrowUp from '../icons/IconArrowUp'
 import { useAuth } from '@clerk/nextjs';
+import { useMutation } from '@tanstack/react-query';
+import { upVoteProduct } from '@/actions/productActions';
 
 type Props = {
   isRoadmap?: boolean;
   upVotesProp: string[];
   setUpVotesProp?: React.Dispatch<React.SetStateAction<string[]>>
+  productId: string;
 }
 
-function UpVoteBtn({ isRoadmap, upVotesProp, setUpVotesProp }: Props) {
+function UpVoteBtn({ isRoadmap, upVotesProp, setUpVotesProp, productId }: Props) {
   const { userId } = useAuth();
   const [upVotes, setUpVotes] = useState<string[]>(upVotesProp);
+
+  const { mutate: handleUpVoteProduct } = useMutation({
+    mutationFn: upVoteProduct
+  })
 
   useEffect(() => {
     setUpVotes(upVotesProp);
@@ -23,6 +30,11 @@ function UpVoteBtn({ isRoadmap, upVotesProp, setUpVotesProp }: Props) {
     event.preventDefault();
 
     if (userId) {
+      handleUpVoteProduct({
+        userId,
+        productId,
+      })
+
       if (upVotes.includes(userId)) {
         const newUpVotes = upVotes.filter(vote => vote !== userId)
 

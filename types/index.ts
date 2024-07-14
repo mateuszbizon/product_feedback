@@ -93,3 +93,9 @@ export type DeleteProductResponseType = {
     message?: string;
     error?: string;
 }
+
+export type UpVoteProductResponseType = {
+    data?: ProductModelType;
+    message?: string;
+    error?: string;
+}
