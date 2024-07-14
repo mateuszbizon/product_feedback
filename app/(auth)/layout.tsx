@@ -18,7 +18,11 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={jost.className}>{children}</body>
+        <body className={jost.className}>
+          <div className="container-1 flex justify-center padding-top padding-bottom">
+            {children}
+          </div>
+        </body>
       </html>
     </ClerkProvider>
   );
