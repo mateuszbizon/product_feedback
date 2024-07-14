@@ -8,5 +8,5 @@ export function getSortCriteria(sort: string) {
         "Least Upvotes": { sortCriteria: { upVotesLength: 1 }, sortFields: { upVotesLength: { $size: "$upVotes" } } },
     }
 
-    return sortData[sort] || { sortCriteria: { commentsLength: -1 }, sortFields: { commentsLength: { $size: "$comments" } } }
+    return sortData[sort] || sortData[0]
 }
