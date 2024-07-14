@@ -6,7 +6,8 @@ import Comment from "@/models/commentModel";
 import ProductFeedback from "@/models/productFeedbackModel";
 import Reply from "@/models/replyModel";
 import User from "@/models/userModel";
-import { CreateProductResponseType, DeleteProductResponseType, EditProductFeedbackResponseType, GetAllProductsResponseType, GetRoadmapProductsResponseType, GetSingleProductResponseType, UpVoteProductResponseType } from "@/types";
+import { CreateProductResponseType, DeleteProductResponseType, EditProductFeedbackResponseType, GetAllProductsResponseType, GetRoadmapProductsResponseType, GetSingleProductResponseType, SortCriteriaType, SortFielsType, UpVoteProductResponseType } from "@/types";
+import { getSortCriteria } from "@/utils/getSortCriteria";
 import { ProductSchemaType } from "@/validations/productSchema";
 import mongoose from "mongoose";
 
@@ -39,9 +40,10 @@ export async function createProductFeedback({ product, creatorId }: CreateProduc
 
 type GetAllProductsProps = {
     category: string
+    sort: string
 }
 
-export async function getAllProducts({ category }: GetAllProductsProps): Promise<GetAllProductsResponseType> {
+export async function getAllProducts({ category, sort }: GetAllProductsProps): Promise<GetAllProductsResponseType> {
     try {
         let productCategory = category;
 
@@ -51,7 +53,13 @@ export async function getAllProducts({ category }: GetAllProductsProps): Promise
             productCategory = PRODUCT_FILTERS_LIST[0];
         }
 
-        const products = await ProductFeedback.find({ category: productCategory, status: "Suggestion" })
+        const sortData = getSortCriteria(sort);
+
+        const products = await ProductFeedback.aggregate([
+            { $match: { category: productCategory, status: "Suggestion" } },
+            { $addFields: sortData.sortFields },
+            { $sort: sortData.sortCriteria }
+        ]);
 
         console.log(JSON.parse(JSON.stringify(products)))
 

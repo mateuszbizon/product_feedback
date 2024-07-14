@@ -11,11 +11,12 @@ import { useProductFilters } from "@/context/ProductFiltersContext";
 import { useQuery } from "@tanstack/react-query";
 
 export default function Home() {
-  const { filterActiveItem } = useProductFilters();
+  const { filterActiveItem, sortActiveItem } = useProductFilters();
   const { data: products, isLoading, isError } = useQuery({
-    queryKey: ["products", filterActiveItem],
+    queryKey: ["products", filterActiveItem, sortActiveItem],
     queryFn: () => getAllProducts({
       category: filterActiveItem,
+      sort: sortActiveItem,
     }),
   })
 

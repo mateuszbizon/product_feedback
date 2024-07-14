@@ -99,3 +99,16 @@ export type UpVoteProductResponseType = {
     message?: string;
     error?: string;
 }
+
+export type SortCriteriaType = {
+    [key: string]: 1 | -1
+}
+
+export type SortFielsType = {
+    commentsLength?: {
+        $size: string;
+    };
+    upVotesLength?: {
+        $size: string;
+    }
+}
