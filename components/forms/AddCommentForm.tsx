@@ -13,6 +13,7 @@ import { createComment } from '@/actions/commentActions';
 import { useAuth } from '@clerk/nextjs';
 import { BasicResponse, CreateCommentResponseType, ProductModelType } from '@/types';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
 
 type Props = {
   product: ProductModelType;
@@ -73,7 +74,11 @@ function AddCommentForm({ product }: Props) {
             </div>
             <div className='flex justify-between items-center'>
                 <span className='text-5 text-dark-3'>{charactersLeft} characters left</span>
-                <Button type='submit' className='whitespace-nowrap' disabled={isPending}>{isPending ? "Adding..." : "Post Comment"}</Button>
+                {userId ? (
+                  <Button type='submit' className='whitespace-nowrap' disabled={isPending}>{isPending ? "Adding..." : "Post Comment"}</Button>
+                ) : (
+                  <Link href={`/sign-in`} className='btn-2 whitespace-nowrap'>Sign In to Comment</Link>
+                )}
             </div>
         </form>
     </div>

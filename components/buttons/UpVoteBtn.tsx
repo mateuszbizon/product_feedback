@@ -5,6 +5,7 @@ import IconArrowUp from '../icons/IconArrowUp'
 import { useAuth } from '@clerk/nextjs';
 import { useMutation } from '@tanstack/react-query';
 import { upVoteProduct } from '@/actions/productActions';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   isRoadmap?: boolean;
@@ -16,6 +17,7 @@ type Props = {
 function UpVoteBtn({ isRoadmap, upVotesProp, setUpVotesProp, productId }: Props) {
   const { userId } = useAuth();
   const [upVotes, setUpVotes] = useState<string[]>(upVotesProp);
+  const router = useRouter();
 
   const { mutate: handleUpVoteProduct } = useMutation({
     mutationFn: upVoteProduct
@@ -52,7 +54,11 @@ function UpVoteBtn({ isRoadmap, upVotesProp, setUpVotesProp, productId }: Props)
       if (setUpVotesProp) {
         setUpVotesProp(prev => [...prev, userId])
       }
+
+      return
     }
+
+    router.push("/sign-in")
   }
 
   function checkUserUpVotes() {
