@@ -21,13 +21,26 @@ function SelectDropdown({ dropdownList, dropdownOpen, activeItem, setDropdownOpe
         setActiveItem(item)
     }
 
+    function handleKeyDown(event: React.KeyboardEvent<HTMLLIElement>, item: string) {
+        if (event.key === 'Enter') {
+            handleClickDropdownItem(item);
+        }
+    }
+
   return (
     <ul 
         ref={dropdownRef}
 		className={`flex flex-col absolute top-12 left-0 bg-light-1 w-full rounded-lg shadow-lg transition-all duration-300 z-10 ${dropdownOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} style={{ top: `${topOffset}px` }}>
         {dropdownList.map((item) => {
             return (
-                <li key={item} className='flex justify-between items-center px-5 py-3 border-b border-b-light-3 text-dark-3 text-7 md:text-5 cursor-pointer hover:text-primary-1 transition duartion-300' onClick={() => handleClickDropdownItem(item)}>{item} {activeItem === item && <IconCheck />}</li>
+                <li 
+                    tabIndex={dropdownOpen ? 0 : -1} 
+                    key={item} 
+                    className='flex justify-between items-center px-5 py-3 border-b border-b-light-3 text-dark-3 text-7 md:text-5 cursor-pointer hover:text-primary-1 transition duartion-300 focus:text-primary-1' 
+                    onClick={() => handleClickDropdownItem(item)}
+                    onKeyDown={(event) => handleKeyDown(event, item)}>
+                    {item} {activeItem === item && <IconCheck />}
+                </li>
             )
         })}
     </ul>
