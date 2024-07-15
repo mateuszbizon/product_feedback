@@ -14,7 +14,7 @@ function GoBackBtn({ variant }: Props) {
     const buttonVariant = variant ? variant : "go-back";
 
   return (
-    <Button variant={buttonVariant} className='flex items-center gap-3' onClick={() => router.back()}>
+    <Button variant={buttonVariant} className='flex items-center gap-3' onClick={() => router.push("/")}>
       <div className={buttonVariant === "go-back" ? "text-primary-2" : ""}><IconArrowLeft /></div> Go Back
     </Button>
   )

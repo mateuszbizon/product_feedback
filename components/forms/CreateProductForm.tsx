@@ -20,6 +20,7 @@ import { createProductFeedback, editProductFeedback } from '@/actions/productAct
 import { useAuth } from '@clerk/nextjs'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
+import CancelBtn from '../buttons/CancelBtn'
 
 type Props = {
     product?: ProductModelType;
@@ -138,7 +139,7 @@ function CreateProductForm({ product }: Props) {
             <div className='flex flex-col gap-4 md:flex-row-reverse md:justify-between mt-3'>
                 <div className='flex flex-col md:flex-row-reverse gap-4'>
                     <Button type='submit' disabled={isPending || isPendingEdit}>{isPending || isPendingEdit ? "Submitting..." : product ? "Save Changes" : "Add Feedback"}</Button>
-                    <Button type='button' variant='third'>Cancel</Button>
+                    <CancelBtn />
                 </div>
                 <div className='flex flex-col md:flex-row'>
                     {product && (
