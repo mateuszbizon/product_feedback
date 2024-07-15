@@ -12,7 +12,7 @@ import Input from '../ui/Input'
 import Textarea from '../ui/Textarea'
 import InputErrorMessage from './InputErrorMessage'
 import Button from '../ui/Button'
-import { CreateProductResponseType, EditProductFeedbackResponseType, ProductModelType } from '@/types'
+import { BasicResponse, CreateProductResponseType, EditProductFeedbackResponseType, ProductModelType } from '@/types'
 import IconEditFeedback from '../icons/IconEditFeedback'
 import DeleteProductBtn from '../buttons/DeleteProductBtn'
 import { useMutation } from '@tanstack/react-query'
@@ -44,26 +44,26 @@ function CreateProductForm({ product }: Props) {
     const { userId } = useAuth();
     const { mutate: handleCreateProductFeedback, isPending } = useMutation({
         mutationFn: createProductFeedback,
-        onSuccess: (result: CreateProductResponseType) => {
+        onSuccess: (result: BasicResponse<CreateProductResponseType>) => {
             if (result.data) {
                 toast.success(result.message)
                 router.push(`/product/${result.data._id}`)
             }
         },
-        onError: (result: CreateProductResponseType) => {
+        onError: (result: BasicResponse<CreateProductResponseType>) => {
             toast.error(result.error)
         }
     });
 
     const { mutate: handleEditProductFeedback, isPending: isPendingEdit } = useMutation({
         mutationFn: editProductFeedback,
-        onSuccess: (result: EditProductFeedbackResponseType) => {
+        onSuccess: (result: BasicResponse<EditProductFeedbackResponseType>) => {
             if (result.data) {
                 toast.success(result.message)
                 router.push(`/product/${result.data._id}`)
             }
         },
-        onError: (result: EditProductFeedbackResponseType) => {
+        onError: (result: BasicResponse<EditProductFeedbackResponseType>) => {
             toast.error(result.error)
         }
     });

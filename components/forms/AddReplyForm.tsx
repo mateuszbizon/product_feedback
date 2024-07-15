@@ -9,7 +9,7 @@ import InputErrorMessage from './InputErrorMessage'
 import Button from '../ui/Button'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createReply } from '@/actions/replyActions'
-import { CommentModelType, CreateReplyResponseType, ReplyModelType } from '@/types'
+import { BasicResponse, CommentModelType, CreateReplyResponseType, ReplyModelType } from '@/types'
 import { toast } from 'react-toastify'
 import { useAuth } from '@clerk/nextjs'
 
@@ -32,7 +32,7 @@ function AddReplyForm({ setReplyFormOpen, comment, reply, productId }: Props) {
     const queryClient = useQueryClient();
     const { mutate: handleCreateReply, isPending } = useMutation({
         mutationFn: createReply,
-        onSuccess: (result: CreateReplyResponseType) => {
+        onSuccess: (result: BasicResponse<CreateReplyResponseType>) => {
             if (result.data) {
                 toast.success(result.message)
                 setReplyFormOpen(false)
@@ -42,7 +42,7 @@ function AddReplyForm({ setReplyFormOpen, comment, reply, productId }: Props) {
                 toast.error(result.error)
             }
         },
-        onError: (result: CreateReplyResponseType) => {
+        onError: (result: BasicResponse<CreateReplyResponseType>) => {
             toast.error(result.error)
         }
     })

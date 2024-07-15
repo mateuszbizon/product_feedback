@@ -40,17 +40,15 @@ export type ReplyModelType = {
     replyingTo: string;
 }
 
-export type CreateProductResponseType = {
-    data?: ProductModelType;
+export type BasicResponse<Data> = {
+    data?: Data;
     message?: string;
     error?: string;
 }
 
-export type GetAllProductsResponseType = {
-    data?: ProductModelType[];
-    message?: string;
-    error?: string;
-}
+export type CreateProductResponseType = ProductModelType;
+
+export type GetAllProductsResponseType = ProductModelType[];
 
 export type RoadmapProductsType = {
     plannedProducts: ProductModelType[];
@@ -58,47 +56,19 @@ export type RoadmapProductsType = {
     inProgressProducts: ProductModelType[];
 }
 
-export type GetRoadmapProductsResponseType = {
-    data?: RoadmapProductsType;
-    message?: string;
-    error?: string;
-}
+export type GetRoadmapProductsResponseType = RoadmapProductsType;
 
-export type GetSingleProductResponseType = {
-    data?: ProductModelType;
-    message?: string;
-    error?: string;
-}
+export type GetSingleProductResponseType = ProductModelType;
 
-export type EditProductFeedbackResponseType = {
-    data?: ProductModelType;
-    message?: string;
-    error?: string;
-}
+export type EditProductFeedbackResponseType = ProductModelType;
 
-export type CreateCommentResponseType = {
-    data?: CommentModelType;
-    message?: string;
-    error?: string;
-}
+export type CreateCommentResponseType = CommentModelType;
 
-export type CreateReplyResponseType = {
-    data?: ReplyModelType;
-    message?: string;
-    error?: string;
-}
+export type CreateReplyResponseType = ReplyModelType;
 
-export type DeleteProductResponseType = {
-    data?: ProductModelType;
-    message?: string;
-    error?: string;
-}
+export type DeleteProductResponseType = ProductModelType;
 
-export type UpVoteProductResponseType = {
-    data?: ProductModelType;
-    message?: string;
-    error?: string;
-}
+export type UpVoteProductResponseType = ProductModelType;
 
 export type SortCriteriaType = {
     [key: string]: 1 | -1

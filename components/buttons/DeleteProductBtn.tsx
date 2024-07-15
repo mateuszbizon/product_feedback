@@ -4,7 +4,7 @@ import React from 'react'
 import Button from '../ui/Button'
 import { useMutation } from '@tanstack/react-query';
 import { deleteProduct } from '@/actions/productActions';
-import { DeleteProductResponseType } from '@/types';
+import { BasicResponse, DeleteProductResponseType } from '@/types';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@clerk/nextjs';
@@ -19,7 +19,7 @@ function DeleteProductBtn({ children, productId }: Props) {
   const { userId } = useAuth();
   const { mutate: handleDeleteProduct, isPending } = useMutation({
     mutationFn: deleteProduct,
-    onSuccess: (result: DeleteProductResponseType) => {
+    onSuccess: (result: BasicResponse<DeleteProductResponseType>) => {
       if (result.data) {
         toast.success(result.message)
         router.push("/")
@@ -27,7 +27,7 @@ function DeleteProductBtn({ children, productId }: Props) {
         toast.error(result.error)
       }
     },
-    onError: (result: DeleteProductResponseType) => {
+    onError: (result: BasicResponse<DeleteProductResponseType>) => {
       toast.error(result.error)
     }
   })

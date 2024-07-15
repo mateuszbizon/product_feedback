@@ -11,7 +11,7 @@ import Button from '../ui/Button';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createComment } from '@/actions/commentActions';
 import { useAuth } from '@clerk/nextjs';
-import { CreateCommentResponseType, ProductModelType } from '@/types';
+import { BasicResponse, CreateCommentResponseType, ProductModelType } from '@/types';
 import { toast } from 'react-toastify';
 
 type Props = {
@@ -31,7 +31,7 @@ function AddCommentForm({ product }: Props) {
   const queryClient = useQueryClient();
   const { mutate: handleCreateComment, isPending } = useMutation({
     mutationFn: createComment,
-    onSuccess: (result: CreateCommentResponseType) => {
+    onSuccess: (result: BasicResponse<CreateCommentResponseType>) => {
       if (result.data) {
         toast.success(result.message)
         reset()
@@ -41,7 +41,7 @@ function AddCommentForm({ product }: Props) {
         toast.error(result.error)
       }
     },
-    onError: (result: CreateCommentResponseType) => {
+    onError: (result: BasicResponse<CreateCommentResponseType>) => {
       toast.error(result.error)
     }
   })

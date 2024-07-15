@@ -6,7 +6,7 @@ import Comment from "@/models/commentModel";
 import ProductFeedback from "@/models/productFeedbackModel";
 import Reply from "@/models/replyModel";
 import User from "@/models/userModel";
-import { CreateProductResponseType, DeleteProductResponseType, EditProductFeedbackResponseType, GetAllProductsResponseType, GetRoadmapProductsResponseType, GetSingleProductResponseType, SortCriteriaType, SortFielsType, UpVoteProductResponseType } from "@/types";
+import { BasicResponse, CreateProductResponseType, DeleteProductResponseType, EditProductFeedbackResponseType, GetAllProductsResponseType, GetRoadmapProductsResponseType, GetSingleProductResponseType, SortCriteriaType, SortFielsType, UpVoteProductResponseType } from "@/types";
 import { getSortCriteria } from "@/utils/getSortCriteria";
 import { ProductSchemaType } from "@/validations/productSchema";
 import mongoose from "mongoose";
@@ -16,7 +16,7 @@ type CreateProductFeedbackProps = {
     creatorId: string;
 }
 
-export async function createProductFeedback({ product, creatorId }: CreateProductFeedbackProps): Promise<CreateProductResponseType> {
+export async function createProductFeedback({ product, creatorId }: CreateProductFeedbackProps): Promise<BasicResponse<CreateProductResponseType>> {
     try {
         await connectDB();
 
@@ -43,7 +43,7 @@ type GetAllProductsProps = {
     sort: string
 }
 
-export async function getAllProducts({ category, sort }: GetAllProductsProps): Promise<GetAllProductsResponseType> {
+export async function getAllProducts({ category, sort }: GetAllProductsProps): Promise<BasicResponse<GetAllProductsResponseType>> {
     try {
         let productCategory = category;
 
@@ -70,7 +70,7 @@ export async function getAllProducts({ category, sort }: GetAllProductsProps): P
     }
 }
 
-export async function getRoadmapProducts(): Promise<GetRoadmapProductsResponseType> {
+export async function getRoadmapProducts(): Promise<BasicResponse<GetRoadmapProductsResponseType>> {
     try {
         await connectDB();
 
@@ -98,7 +98,7 @@ type GetSingleProductProps = {
     productId: string;
 }
 
-export async function getSingleProduct({ productId }: GetSingleProductProps): Promise<GetSingleProductResponseType> {
+export async function getSingleProduct({ productId }: GetSingleProductProps): Promise<BasicResponse<GetSingleProductResponseType>> {
     try {
         await connectDB();
 
@@ -146,7 +146,7 @@ type EditProductFeedbackProps = {
     creatorId: string;
 }
 
-export async function editProductFeedback({ productId, product, creatorId }: EditProductFeedbackProps): Promise<EditProductFeedbackResponseType> {
+export async function editProductFeedback({ productId, product, creatorId }: EditProductFeedbackProps): Promise<BasicResponse<EditProductFeedbackResponseType>> {
     try {
         await connectDB();
 
@@ -176,7 +176,7 @@ type DeleteProductProps = {
     creatorId: string;
 }
 
-export async function deleteProduct({ productId, creatorId }: DeleteProductProps): Promise<DeleteProductResponseType> {
+export async function deleteProduct({ productId, creatorId }: DeleteProductProps): Promise<BasicResponse<DeleteProductResponseType>> {
     try {
         await connectDB();
 
@@ -206,7 +206,7 @@ type UpVoteProductProps = {
     productId: string;
 }
 
-export async function upVoteProduct({ userId, productId }: UpVoteProductProps): Promise<UpVoteProductResponseType> {
+export async function upVoteProduct({ userId, productId }: UpVoteProductProps): Promise<BasicResponse<UpVoteProductResponseType>> {
     try {
         await connectDB();
 

@@ -4,7 +4,7 @@ import connectDB from "@/config/database"
 import Comment from "@/models/commentModel";
 import ProductFeedback from "@/models/productFeedbackModel";
 import User from "@/models/userModel";
-import { CreateCommentResponseType } from "@/types";
+import { BasicResponse, CreateCommentResponseType } from "@/types";
 import { CommentSchemaType } from "@/validations/commentSchema";
 import mongoose from "mongoose";
 
@@ -14,7 +14,7 @@ type CreateCommentProps = {
     productId: string;
 }
 
-export async function createComment({ comment, creatorId, productId }: CreateCommentProps): Promise<CreateCommentResponseType> {
+export async function createComment({ comment, creatorId, productId }: CreateCommentProps): Promise<BasicResponse<CreateCommentResponseType>> {
     try {
         await connectDB();
 
