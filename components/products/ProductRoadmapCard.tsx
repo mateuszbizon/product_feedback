@@ -3,6 +3,7 @@ import IconComments from '../icons/IconComments'
 import UpVoteBtn from '../buttons/UpVoteBtn'
 import { getProductStatusColor } from '@/utils/getProductStatusColor'
 import { ProductModelType } from '@/types'
+import Link from 'next/link'
 
 type Props = {
   product: ProductModelType;
@@ -19,7 +20,7 @@ function ProductRoadmapCard({ product }: Props) {
         </div>
 
         <div className='flex flex-col gap-3'>
-            <p className='text-7 xl:text-3 font-bold text-dark-2'>{product.title}</p>
+            <Link href={`/product/${product._id}`}><p className='text-7 xl:text-3 font-bold text-dark-2 hover:text-primary-2 transition'>{product.title}</p></Link>
             <p className='text-7 xl:text-4 font-normal text-dark-3'>{product.details}</p>
             <div className='filter-box w-fit'>{product.category}</div>
         </div>
