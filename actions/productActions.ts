@@ -55,8 +55,14 @@ export async function getAllProducts({ category, sort }: GetAllProductsProps): P
 
         const sortData = getSortCriteria(sort);
 
+        const matchData: { category?: string, status: string } = { status: "Suggestion" }
+
+        if (productCategory !== "All") {
+            matchData.category = productCategory
+        }
+
         const products = await ProductFeedback.aggregate([
-            { $match: { category: productCategory, status: "Suggestion" } },
+            { $match: matchData },
             { $addFields: sortData.sortFields },
             { $sort: sortData.sortCriteria }
         ]);

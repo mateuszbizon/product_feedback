@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import IconNewFeedback from '../icons/IconNewFeedback'
 import SelectDropdown from '../select-dropdown/SelectDropdown'
-import { PRODUCT_FILTERS_LIST, PRODUCT_STATUS_LIST } from '@/constants'
+import { PRODUCT_FILTERS_DROPDOWN_SELECT_LIST, PRODUCT_STATUS_LIST } from '@/constants'
 import SelectButton from '../select-dropdown/SelectButton'
 import { useForm } from 'react-hook-form'
 import { ProductSchemaType, productSchema } from '@/validations/productSchema'
@@ -28,7 +28,7 @@ type Props = {
 
 function CreateProductForm({ product }: Props) {
     const [categoryDropdownOpen, setCategoryDropdownOpen] = useState(false)
-    const [categoryItem, setCategoryItem] = useState(product ? product.category : PRODUCT_FILTERS_LIST[0])
+    const [categoryItem, setCategoryItem] = useState(product ? product.category : PRODUCT_FILTERS_DROPDOWN_SELECT_LIST[0])
     const [statusDropdownOpen, setStatusDropdownOpen] = useState(false)
     const [statusItem, setStatusItem] = useState(product ? product.status : PRODUCT_STATUS_LIST[0])
     const { handleSubmit, register, formState: { errors }, setValue } = useForm<ProductSchemaType>({
@@ -36,7 +36,7 @@ function CreateProductForm({ product }: Props) {
         defaultValues: {
             title: product ? product.title : "",
             details: product ? product.details : "",
-            category: product ? product.category : PRODUCT_FILTERS_LIST[0],
+            category: product ? product.category : PRODUCT_FILTERS_DROPDOWN_SELECT_LIST[0],
             status: product ? product.status : PRODUCT_STATUS_LIST[0],
         }
     })
@@ -114,7 +114,7 @@ function CreateProductForm({ product }: Props) {
                 <span className='input-help-text-1'>Choose category for your feedback</span>
                 <div className='relative'>
                     <SelectButton activeItem={categoryItem} setDropdownOpen={setCategoryDropdownOpen} />
-                    <SelectDropdown dropdownList={PRODUCT_FILTERS_LIST} dropdownOpen={categoryDropdownOpen} setDropdownOpen={setCategoryDropdownOpen} activeItem={categoryItem} setActiveItem={handleSetCategoryItem} topOffset={60} />
+                    <SelectDropdown dropdownList={PRODUCT_FILTERS_DROPDOWN_SELECT_LIST} dropdownOpen={categoryDropdownOpen} setDropdownOpen={setCategoryDropdownOpen} activeItem={categoryItem} setActiveItem={handleSetCategoryItem} topOffset={60} />
                 </div>
             </div>
 
