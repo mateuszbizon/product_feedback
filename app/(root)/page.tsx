@@ -21,28 +21,30 @@ export default function Home() {
   })
 
   return (
-    <div className="container-1 flex flex-col xl:flex-row md:gap-12 xl:gap-6 md:padding-top padding-bottom">
-      <div className="xl:w-1/5">
-        <HomeHeaderMobile />
-        <HomeHeaderDesktop />
-      </div>
+    <section>
+      <div className="container-1 flex flex-col xl:flex-row md:gap-12 xl:gap-6 md:padding-top padding-bottom">
+        <div className="xl:w-1/5">
+          <HomeHeaderMobile />
+          <HomeHeaderDesktop />
+        </div>
 
-      
-      <div className="xl:w-4/5">
-        <SortProducts productsLength={products?.data?.length} />
+        
+        <div className="xl:w-4/5">
+          <SortProducts productsLength={products?.data?.length} />
 
-        {isError && (
-          <ErrorMessage message={products?.error!} />
-        )}
-        
-        {isLoading && (
-          <CircleLoading />
-        )}
-        
-        {products?.data && (
-          <Products products={products.data} />
-        )}
+          {isError && (
+            <ErrorMessage message={products?.error!} />
+          )}
+          
+          {isLoading && (
+            <CircleLoading />
+          )}
+          
+          {products?.data && (
+            <Products products={products.data} />
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

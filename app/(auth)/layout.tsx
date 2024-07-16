@@ -19,9 +19,11 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={jost.className}>
-          <div className="container-1 flex justify-center padding-top padding-bottom">
-            {children}
-          </div>
+          <main>
+            <div className="container-1 flex justify-center padding-top padding-bottom">
+              {children}
+            </div>
+          </main>
         </body>
       </html>
     </ClerkProvider>

@@ -26,7 +26,9 @@ export default function RootLayout({
           <html lang="en">
             <body className={`${jost.className} bg-light-3`}>
               <ToastContainer position="top-center" autoClose={3000} />
-              {children}
+              <main>
+                {children}
+              </main>
             </body>
           </html>
         </ClerkProvider>

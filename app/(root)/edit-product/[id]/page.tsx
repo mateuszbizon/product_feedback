@@ -17,22 +17,24 @@ function EditProductPage({ params }: Props) {
   const { product, isLoading, isError } = useGetSingleProduct({ productId: params.id })
 
   return (
-    <div className='container-3 padding-top padding-bottom space-y-14 max-w-[540px]'>
-        <div>
-            <GoBackBtn />
-        </div>
-        {isError || product?.error && (
-          <ErrorMessage message={product?.error} />
-        )}
+    <section>
+      <div className='container-3 padding-top padding-bottom space-y-14 max-w-[540px]'>
+          <div>
+              <GoBackBtn />
+          </div>
+          {isError || product?.error && (
+            <ErrorMessage message={product?.error} />
+          )}
 
-        {isLoading && (
-          <CircleLoading />
-        )}
+          {isLoading && (
+            <CircleLoading />
+          )}
 
-        {product?.data && (
-          <CreateProductForm product={product.data} />
-        )}
-    </div>
+          {product?.data && (
+            <CreateProductForm product={product.data} />
+          )}
+      </div>
+    </section>
   )
 }
 

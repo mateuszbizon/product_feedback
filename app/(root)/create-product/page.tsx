@@ -4,12 +4,14 @@ import React from 'react'
 
 function CreateProductPage() {
   return (
-    <div className='container-3 padding-top padding-bottom space-y-14 max-w-[540px]'>
-        <div>
-            <GoBackBtn />
-        </div>
-        <CreateProductForm />
-    </div>
+    <section>
+      <div className='container-3 padding-top padding-bottom space-y-14 max-w-[540px]'>
+          <div>
+              <GoBackBtn />
+          </div>
+          <CreateProductForm />
+      </div>
+    </section>
   )
 }
 

@@ -23,37 +23,39 @@ function ProductPage({ params }: Props) {
   const { userId } = useAuth();
 
   return (
-    <div className='padding-top h-screen flex flex-col gap-2'>
-        <div className='flex-1 space-y-5 overflow-y-auto'>
-            <div className='container-3 flex justify-between max-w-[730px]'>
-                <GoBackBtn />
-                {product?.data && product.data.creator.clerkId === userId && (
-                  <Link href={`/edit-product/${product.data._id}`} className='btn-3'>Edit Feedback</Link>
+    <section>
+      <div className='padding-top h-screen flex flex-col gap-2'>
+          <div className='flex-1 space-y-5 overflow-y-auto'>
+              <div className='container-3 flex justify-between max-w-[730px]'>
+                  <GoBackBtn />
+                  {product?.data && product.data.creator.clerkId === userId && (
+                    <Link href={`/edit-product/${product.data._id}`} className='btn-3'>Edit Feedback</Link>
+                  )}
+              </div>
+              <div className='container-3 max-w-[730px]'>
+                {isError || product?.error && (
+                  <ErrorMessage message={product?.error!} />
                 )}
-            </div>
-            <div className='container-3 max-w-[730px]'>
-              {isError || product?.error && (
-                <ErrorMessage message={product?.error!} />
-              )}
 
-              {isLoading && (
-                <CircleLoading />
-              )}
+                {isLoading && (
+                  <CircleLoading />
+                )}
 
-              {product?.data && (
-                <Product product={product.data} />
-              )}
-            </div>
-        </div>
+                {product?.data && (
+                  <Product product={product.data} />
+                )}
+              </div>
+          </div>
 
-        <div className='container-3 max-w-[730px]'>
-          {product?.data && (
-            <div className='container-4'>
-              <AddCommentForm product={product.data} />
-            </div>
-          )}
-        </div>
-    </div>
+          <div className='container-3 max-w-[730px]'>
+            {product?.data && (
+              <div className='container-4'>
+                <AddCommentForm product={product.data} />
+              </div>
+            )}
+          </div>
+      </div>
+    </section>
   )
 }
 
